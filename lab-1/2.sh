@@ -5,12 +5,12 @@
 ans=""
 
 while true;
-do 
-    read line 
-	if [[ $line == "q" ]];
-		then break;
-	fi;
-	ans+="$line "
+do
+    read line
+    if [[ $line == "q" ]]; then
+        break;
+    fi;
+    ans+="$line "
 done
 
 echo "$ans"
