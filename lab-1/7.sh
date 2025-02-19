@@ -3,4 +3,4 @@
 # встречающиеся во всех файлах директории /etc.
 
 regex="[a-zA-Z0-9._-]+@[a-z0-9_-]+\.[a-z]{2,}"
-grep -r -E -o "$regex" /etc | uniq | tr '\n' ',' | sed 's/,$/\n/' | > email.lst
+grep -roE "$regex" /etc | uniq | tr '\n' ',' | sed 's/,$/\n/' | > email.lst
