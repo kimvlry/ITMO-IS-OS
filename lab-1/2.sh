@@ -3,14 +3,12 @@
 # После этого вывести последовательность считанных строк в виде одной строки.
 
 ans=""
+read line
 
-while true;
+while [[ $line != "q" ]];
 do
-    read line
-    if [[ $line == "q" ]]; then
-        break;
-    fi;
     ans+="$line "
+    read line
 done
 
 echo "$ans"
