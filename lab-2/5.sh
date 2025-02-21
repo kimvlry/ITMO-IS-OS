@@ -5,7 +5,7 @@
 #
 #! /bin/bash
 
-prev_task_output_file="/4/output.txt"
+prev_task_output_file="4/output.txt"
 if [ ! -f "$prev_task_output_file" ]; then
     echo "output.txt not found"
     exit 
@@ -19,6 +19,12 @@ awk -v Pid_index=1 \
     ART = splitted[2] + 0
     
     parentID = $PPid_index
+
+    if (prev_parentID != "" && prev_parentID != parentID) {
+        average = PPid[prev_parentID] / count[prev_parentID]
+        print "Average_Running_Children_of_ParentID=" parentID "is" average "\n\n"
+    }
+
     PPid[parentID] += ART
     count[parentID]++
 
@@ -26,14 +32,11 @@ awk -v Pid_index=1 \
 }
 
 END {
-    for (parent in PPid) {
-        average = PPid[parent] / count[parent];
-        printf "Average_Running_Children_of_ParentID=%d is %.4f\n", parent, average;
+    if (prev_parentID != "") {
+        average = PPid[prev_parentID] / count[prev_parentID];
+        print "Average_Running_Children_of_ParentID=" prev_parentID "is" average "\n\n"
     }
-}' 
-"$prev_task_output_file" > "tmp.txt"
-
-echo hereeee
+}' "$prev_task_output_file" > "tmp.txt"
 
 if [ -s "tmp.txt" ]; then
     mv "tmp.txt" "$prev_task_output_file"
