@@ -38,4 +38,4 @@ for pid in /proc/[0-9]*; do
 
 done
 
-sort -t "=" -k2,2n output.txt > tmp.txt && mv tmp.txt output.txt
+sort -t "=" -k3,3n output.txt > tmp.txt && mv tmp.txt output.txt
