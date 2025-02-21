@@ -11,14 +11,14 @@ if [ ! -f "$prev_task_output_file" ]; then
     exit 
 fi
 
-awk -v Pid_index=1 \
-    -v PPid_index=3 \
-    -v ART_index=5 '
+awk -v Pid_column_index=1 \
+    -v PPid_column_index=3 \
+    -v ART_column_index=5 '
 {
-    split($(ART_index), splitted, "=")
+    split($(ART_column_index), splitted, "=")
     ART = splitted[2] + 0
     
-    parentID = $(PPid_index)
+    parentID = $(PPid_column_index)
 
     if (prev_parentID != "" && prev_parentID != parentID) {
         average = PPid[prev_parentID] / count[prev_parentID]
