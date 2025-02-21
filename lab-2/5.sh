@@ -15,26 +15,28 @@ awk -v Pid_index=1 \
     -v PPid_index=3 \
     -v ART_index=5 '
 {
-    split($ART_index, splitted, "=")
+    split($(ART_index), splitted, "=")
     ART = splitted[2] + 0
     
-    parentID = $PPid_index
+    parentID = $(PPid_index)
 
+    prev_parentID = ""
     if (prev_parentID != "" && prev_parentID != parentID) {
         average = PPid[prev_parentID] / count[prev_parentID]
-        print "Average_Running_Children_of_ParentID=" parentID "is" average "\n\n"
+        print "Average_Running_Children_of_ParentID=" prev_parentID, "is", average "\n\n"
     }
 
     PPid[parentID] += ART
     count[parentID]++
 
     print $0
+    prev_parentID = parentID
 }
 
 END {
     if (prev_parentID != "") {
         average = PPid[prev_parentID] / count[prev_parentID];
-        print "Average_Running_Children_of_ParentID=" prev_parentID "is" average "\n\n"
+        print "Average_Running_Children_of_ParentID=" prev_parentID, "is", average "\n\n"
     }
 }' "$prev_task_output_file" > "tmp.txt"
 
