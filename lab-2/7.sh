@@ -9,9 +9,9 @@ declare -A before after diff #maps
 collect_io() {
     declare -n arr=$1
     while read -r filename bytes; do
-        pid=$("$file" | sed 's/[^0-9]//g')
+        pid=${filename//[^0-9]/}
         arr[$pid]=$bytes
-    done < <(awk '/read_bytes/ {print FILENAME, $2}' /proc/[0-9]*/io)
+    done < <(awk '/read_bytes/ {print FILENAME, $NF}' /proc/[0-9]*/io 2>/dev/null)
 }
 
 collect_io before
@@ -25,8 +25,7 @@ for pid in ${!before[@]}; do
     fi
 done
 
-for pid in $(for p in "${!diff[@]}"); do
-    echo "$p ${diff[$p]}"; done | sort -nr -k2 | head -n 3 | cut -d' ' -f1); do
+for pid in $(printf "%s %s\n" "${!diff[@]}" "${diff[@]}" | sort -nr -k2 | head -n 3 | cut -d' ' -f1); do
     cmd=$(ps -o cmd= -p "$pid");
     echo "$pid : $cmd : ${diff[$pid]}";
 done
