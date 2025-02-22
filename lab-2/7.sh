@@ -25,7 +25,8 @@ for pid in ${!before[@]}; do
     fi
 done
 
-for pid in $(printf "%s %s\n" "${!diff[@]}" "${diff[@]}" | sort -nr -k2 | head -n 3 | cut -d' ' -f1); do
-    cmd=$(ps -o cmd= -p "$pid");
+for pid in $(for p in "${!diff[@]}"; do echo $p "${diff[$p]}"; done | sort -nr -k2 | head -n 3 | cut -d' ' -f1); do
+    cmd=$(ps -o cmd= -p "$pid" 2>/dev/null);
+    [[ -z $cmd ]] && cmd="[terminated]"
     echo "$pid : $cmd : ${diff[$pid]}";
 done
