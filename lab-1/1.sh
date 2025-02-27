@@ -10,3 +10,4 @@ else
     echo $3;
 fi
 
+# $0 contains script name
