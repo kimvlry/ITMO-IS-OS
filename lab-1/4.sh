@@ -8,3 +8,5 @@ if [[ "$(pwd)" == "$HOME" ]]; then
 else 
     exit 1
 fi
+
+# pwd - print working directory
