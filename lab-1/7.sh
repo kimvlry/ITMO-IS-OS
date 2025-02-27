@@ -3,7 +3,7 @@
 # встречающиеся во всех файлах директории /etc.
 
 regex="[[:alnum:]._]+@[[:alnum:]._]+\.[[:alnum:]]{2,}"
-grep -rIEoh "$regex" /etc | sort -u | tr '\n' ',' > email.lst
+grep -rIEoh "$regex" /etc | sort -u | tr '\n' ',' | sed 's/,$/\n/' > email.lst
 
 # -r for recursive search in /etc
 # -E extended regex syntax
