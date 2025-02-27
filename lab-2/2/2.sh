@@ -4,3 +4,5 @@
 #! /bin/bash
 
 ps a -o pid,cmd --no-headers | awk '$2 ~ "^/sbin/" {print $1}' > output.txt
+#
+# ^ start  of the string 
