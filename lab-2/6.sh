@@ -28,4 +28,6 @@ echo -e "$max_memo_processID $max_memo_process_name $max_memo kB\n"
 
 echo "according to top command:"
 top -b -o %MEM | head -n 8 | tail -n 2
+#
+# -b batch mode (no interactive display)
 
