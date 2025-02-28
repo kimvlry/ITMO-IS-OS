@@ -7,6 +7,8 @@ grep -rIEoh "$regex" /etc | sort -u | tr '\n' ',' | sed 's/,$/\n/' > email.lst
 
 # -r for recursive search in /etc
 # -E extended regex syntax
+# -o only regex
+# -h without headers
 #
 # sed goes line by line and tr reads char by char
 #
