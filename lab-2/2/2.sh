@@ -3,6 +3,8 @@
 #
 #! /bin/bash
 
-ps a -o pid,cmd --no-headers | awk '$2 ~ "^/sbin/" {print $1}' > output.txt
+ps -eo pid,cmd --no-headers | awk '$2 ~ "^/sbin/" {print $1}' > output.txt
 #
-# ^ start  of the string 
+# ^ start  of the string
+# -e select all processes.  Identical to -A
+# -o output format
