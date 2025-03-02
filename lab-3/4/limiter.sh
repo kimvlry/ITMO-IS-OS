@@ -21,9 +21,10 @@ fi
 percent_limit=10
 while true; do
     cpu_usage=$(ps -p "$first" -o %cpu --no-headers | awk '{print $1}')
-    if [[ -n "$cpu_usage" $(echo "$cpu_usage > $percent_limit" | bc) -eq 1 ]]; then
+    usage_check=$(echo "$cpu_usage > $percent_limit" | bc)
+    if [[ "$usage_check" -eq 1 ]]; then
         echo "current cpu usage = $cpu_usage , lowering priority"
-        sudo renice -n 10 -p "$first" > /dev/null
+        sudo renice -n 19 -p "$first" > /dev/null
         sleep 3
     else 
         echo "current CPU usage = $cpu_usage , all good"
