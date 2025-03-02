@@ -7,7 +7,7 @@ mkdir $HOME/test 2>/dev/null && {
     touch "$HOME/test/$timestamp";
 };
 
-ping -c 1 www.net_nikogo.ru >/dev/null 2>&1 || echo "$timestamp host is unreachable" >> $HOME/report
+ping -c 1 www.net_nikogo.ru >/dev/null 2>&1 echo "ping" || echo "write" echo "$timestamp host is unreachable" >> $HOME/report
 
 # >2/dev/null: 2 stands for stderr
 # 2>&1: redirect stderr contents to the stdout
