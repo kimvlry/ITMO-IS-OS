@@ -1,6 +1,6 @@
 #! /bin/bash
 # Вывести три наиболее часто встречающихся слова из man 
-# по команде bash длиной не менее четырех символов.
+# по произвольной команде длиной не менее четырех символов.
 
 echo "input command to count 3 most frequent words in the manual of"
 read command
