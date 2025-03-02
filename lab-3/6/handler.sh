@@ -4,16 +4,16 @@ echo $$ > "handlerPID.txt"
 MODE="+"
 NUM=1
 
-addition() { MODE="+" }
-multiplication() { MODE="*" }
+addition() { MODE="+"; }
+multiplication() { MODE="*"; }
 termination() {
-    echo "quitting handler"
-    exit 0
+    echo "quitting handler";
+    exit 0;
 }
 
-trap 'addition' USR1
-trap 'multiplication' USR2
-trap 'termination' TERM
+trap addition USR1
+trap multiplication USR2
+trap termination TERM
 
 while true; do
     sleep 1
@@ -28,4 +28,5 @@ while true; do
         *)
             ;;
     esac
+    echo "current value: $NUM"
 done
