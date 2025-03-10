@@ -3,6 +3,10 @@
 # Проверьте, что созданный скрипт по-прежнему удерживает потребление ресурсов процессора первым процессом 
 # в заданном диапазоне
 
+#cd ~
+#wget https://astuteinternet.dl.sourceforge.net/project/limitcpu/limitcpu/cpulimit-2.5.tar.gz
+#tar -xvf cpulimit-2.5.tar.gz
+
 #!/bin/bash
 
 if [ ! -f "PIDs.txt" ]; then
