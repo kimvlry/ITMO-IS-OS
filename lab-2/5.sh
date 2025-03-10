@@ -22,7 +22,7 @@ awk -v Pid_column_index=1 \
 
     if (prev_parentID != "" && prev_parentID != parentID) {
         average = PPid[prev_parentID] / count[prev_parentID]
-        print "Average_Running_Children_of_ParentID=" prev_parentID, "is", average "\n"
+        printf "Average_Running_Children_of_ParentID=%d is %.2f\n\n", prev_parentID, average
     }
 
     PPid[parentID] += ART
@@ -35,7 +35,7 @@ awk -v Pid_column_index=1 \
 END {
     if (prev_parentID != "") {
         average = PPid[prev_parentID] / count[prev_parentID];
-        print "Average_Running_Children_of_ParentID=" prev_parentID, "is", average "\n"
+        printf "Average_Running_Children_of_ParentID=%d is %.2f\n\n", prev_parentID, average
     }
 }' "$prev_task_output_file" > "tmp.txt"
 
