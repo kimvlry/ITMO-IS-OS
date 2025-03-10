@@ -14,7 +14,7 @@
 
 > output.txt
 for pid in /proc/[0-9]*; do
-    pid=${basename pid}
+    pid=$(basename $pid)
 
     if [[ -f "/proc/$pid/status" && -f "/proc/$pid/sched" ]]; then
         status=/proc/$pid/status

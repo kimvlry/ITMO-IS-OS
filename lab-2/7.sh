@@ -12,7 +12,9 @@ collect_io() {
     declare -n arr=$1 
     while read -r filename bytes; do
         pid=${filename//[^0-9]/}
-        arr[$pid]=$bytes
+        if [[ -d "/proc/$pid" ]]; then
+            arr[$pid]=$bytes
+        fi 
     done < <(awk '/read_bytes/ {print FILENAME, $NF}' /proc/[0-9]*/io 2>/dev/null)
 }
 
@@ -24,8 +26,15 @@ collect_io after
 for pid in ${!before[@]}; do
     if [[ -n ${after[$pid]} ]]; then
         diff[$pid]=$(( after[$pid] - before[$pid] ))
+    else 
+        diff[$pid]=${before[$pid]}
     fi
 done
+
+if [[ ${diff[@]} -eq 0 ]]; then
+    echo "no proccesses read disk"
+    exit 0
+fi
 
 # {map[@]} - gets all values
 # {!map[@]} - gets all keys

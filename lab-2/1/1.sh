@@ -5,5 +5,5 @@
 
 echo "enter user name"
 read user
-ps u $user --no-headers | wc -l > output.txt && \
-ps u $user -o pid,cmd --no-headers | awk '{print $1 ":" $2}' >> output.txt
+ps -u "$user" --no-headers | wc -l > output.txt && \
+ps -u "$user" -o pid,cmd --no-headers | awk '{print $1 ":" $2}' >> output.txt
