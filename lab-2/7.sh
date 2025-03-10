@@ -24,15 +24,13 @@ collect_io before
 sleep 60
 collect_io after
 
-for pid in "${!before[@]}"; do
-    # if process was terminated between checks, the after value is 0 (:-0)
-    diff["$pid"]=$(( ${after[$pid]:-0} - ${before[$pid]} ))
+for pid in ${!before[@]}; do
+    if [[ -n ${after[$pid]} ]]; then
+        diff[$pid]=$(( after[$pid] - before[$pid] ))
+    else 
+        diff[$pid]=${before[$pid]}
+    fi
 done
-
-if [[ ${#diff[@]} -eq 0 ]]; then
-    echo "No processes with disk read activity detected!"
-    exit 0
-fi
 
 # {map[@]} - gets all values
 # {!map[@]} - gets all keys
