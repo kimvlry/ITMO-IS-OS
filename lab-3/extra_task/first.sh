@@ -9,7 +9,7 @@ trap 'rm -rf "$PIPE"' EXIT
 
 read_message() {
     while true; do
-        if read message <"$PIPE"; then
+        if read -t 1 message <"$PIPE"; then  
             if [[ $message == "TERM" ]]; then
                 echo "USER 2 exits chat."
                 break
@@ -21,8 +21,8 @@ read_message() {
 }
 
 write_message() {
-    echo -n "enter message:"
     while true; do
+        echo -n "enter message: "
         read message
         if [[ $message == "TERM" ]]; then
             echo "$message" >"$PIPE"
@@ -40,5 +40,3 @@ read_message &
 write_message &
 
 wait
-
-rm -f "$PIPE"
