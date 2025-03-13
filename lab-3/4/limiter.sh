@@ -3,10 +3,6 @@
 # Проверьте, что созданный скрипт по-прежнему удерживает потребление ресурсов процессора первым процессом 
 # в заданном диапазоне
 
-#cd ~
-#wget https://astuteinternet.dl.sourceforge.net/project/limitcpu/limitcpu/cpulimit-2.5.tar.gz
-#tar -xvf cpulimit-2.5.tar.gz
-
 #!/bin/bash
 
 if [ ! -f "PIDs.txt" ]; then
@@ -28,20 +24,28 @@ if ! ps -p "$third" >/dev/null; then
 fi
 
 percent_limit=10
-while true; do
-    cpu_usage=$(ps -p "$first" -o %cpu --no-headers | awk '{print $1}')
-    usage_check=$(echo "$cpu_usage > $percent_limit" | bc)
-    if [[ "$usage_check" -eq 1 ]]; then
-        echo "current cpu usage = $cpu_usage , lowering priority"
-        sudo renice -n 19 -p "$first" > /dev/null
-        sleep 3
-    else 
-        echo "current CPU usage = $cpu_usage , all good"
-        break
-    fi
-done
-echo "resulting CPU usage = $cpu_usage"
+{
+    while true; do
+        cpu_usage=$(top -bn1 -p $first | tail +8 | awk '{print $9}')
+        cpu_usage=${cpu_usage%.*}
+        current_nice=$(top -bn1 -p $first | tail -n +8 | awk '{print $4}')
+
+        if [[ $cpu_usage -gt 10 ]] && [[ $current_nice -lt 19 ]]; then
+            echo "first proccess CPU usgae: ${cpu_usage} -> increasing nice by 1 from $current_nice..."
+            renice -n $((current_nice + 1)) -p $first
+        else
+            echo "current CPU usage: $cpu_usage"
+            break;
+        fi
+        sleep 2
+    done
+}
+
 
 kill -9 "$third"
-echo "killed 3"
+echo "killed proccess 3"
+
+sleep 2
+echo "current CPU usage of proccess 1:"
+top -bn1 -p $first | tail -n + 8 | awk '{printf "PID: %s\nNI": %s\nCPU: %s%%\n", $1, $4, $9}'
 
