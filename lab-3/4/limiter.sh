@@ -19,13 +19,9 @@ ps -p "$third" || { echo "third process not found"; exit 1; }
 percent_limit=10
 {
     while true; do
-        stats=$(top -bn -p $first | awk -v pid="$first" '$1 == pid {
-            printf "CPU: %.0f%%\nNI: %d\n", $9, $4
-            exit
-        }')
-
-        cpu_usage=$(echo "$stats" | awk '/CPU/ {print $2}')
-        current_nice=$(echo "$stats" | awk '/NI/ {print $2}')
+        cpu_usage=$(top --no-header -bn1 -p "$first" | tail -n +8 | awk '{print $9}')
+        cpu_usage=${cpu_usage%.*}
+        current_nice=$(top --no-header -bn1 -p "$first" | tail -n +8 | awk '{print $4}')
 
         if [[ $cpu_usage -gt $percent_limit ]] && [[ $current_nice -lt 19 ]]; then
             renice -n $((current_nice + 1)) -p $first
