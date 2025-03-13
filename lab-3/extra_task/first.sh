@@ -6,31 +6,34 @@ if [ ! -p "$PIPE" ]; then
 fi
 
 read() {
-    if read message <"$PIPE"; then 
-        if [[ $message == "TERM" ]]; then       
-            echo "they exit chat"
-            break
+    while true; do
+        if read message <"$PIPE"; then 
+            if [[ $message == "TERM" ]]; then       
+                echo "they exit chat"
+                break
+            fi
+            echo "THEM: $message"
         fi
-        echo "THEM: $message"
-    fi    
+    done
 }
 
 write() {
-    echo "enter your message:"
-    read message
-    if [[ $message == "TERM" ]]; then
-        echo $message>$PIPE
-        break
-    fi
-    echo "$message">$PIPE
+    while true; do
+        echo "enter your message:"
+        read message
+        if [[ $message == "TERM" ]]; then
+            echo $message>$PIPE
+            break
+        fi
+        echo "$message">$PIPE
+    done
 }    
 
 echo "USER2 is connected">$PIPE
 echo "enter TERM to exit chat"
 
-while true; do
-    read
-    write
-done 
+write & 
+read &
 
+wait 
 rm -rf $PIPE
