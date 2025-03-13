@@ -8,7 +8,6 @@ fi
 trap 'rm -f "$PIPE"; exit' EXIT SIGINT
 
 read_messages() {
-    while true; do
         if read -t 1 message <"$PIPE"; then
             if [[ -n $message ]]; then
                 if [[ "$message" == "TERM" ]]; then
@@ -18,11 +17,9 @@ read_messages() {
                 echo "USER1: $message"
             fi
         fi
-    done
 }
 
 send_messages() {
-    while true; do
         echo -n "Your message: "
         read message
         if [[ -n $message ]]; then
@@ -32,11 +29,11 @@ send_messages() {
             fi
             echo "$message" >"$PIPE"
         fi
-    done
 }
 
 echo "Chat started. Type 'TERM' to exit."
 
-read_messages &
-send_messages
-
+while true; do
+    send_messages
+    read_messages
+done
