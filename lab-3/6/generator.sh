@@ -28,6 +28,7 @@ while true; do
             ;;
         "TERM")
             kill -TERM "$HANDLER_PID"
+            exit 0
             ;;
         *)
             ;;
