@@ -34,3 +34,5 @@ while true; do
     esac
 done
 
+# kill - sends signal (TERM by default)
+# USR-1, USR-2 - signals signals that can be customized
