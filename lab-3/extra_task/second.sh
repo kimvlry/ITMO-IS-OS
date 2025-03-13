@@ -12,7 +12,7 @@ read_messages() {
             if [[ -n $message ]]; then
                 if [[ "$message" == "TERM" ]]; then
                     echo "USER1 exited the chat."
-                    break
+                    exit 0;
                 fi
                 echo "USER1: $message"
             fi
@@ -25,7 +25,7 @@ send_messages() {
         if [[ -n $message ]]; then
             if [[ "$message" == "TERM" ]]; then
                 echo "$message" >"$PIPE"
-                break
+                exit 0;
             fi
             echo "$message" >"$PIPE"
         fi
