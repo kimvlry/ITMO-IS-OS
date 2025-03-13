@@ -18,7 +18,7 @@
 
 #!/bin/bash
 
-PIPE="../pipe"
+PIPE="pipe"
 
 echo "select mode ('+' for addititon or '*' for multiplication),"
 echo "input numerical operand (basic mode is '+')"

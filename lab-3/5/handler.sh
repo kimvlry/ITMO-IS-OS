@@ -18,7 +18,7 @@
 
 #!/bin/bash
 
-PIPE="../pipe"
+PIPE="pipe"
 MODE="+"
 NUM=1
 
