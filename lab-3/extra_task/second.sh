@@ -5,9 +5,11 @@ if [ ! -p "$PIPE" ]; then
     mkfifo "$PIPE"
 fi
 
+trap 'rm -rf "$PIPE"' EXIT
+
 read_message() {
     while true; do
-        if read -t 1 message <"$PIPE"; then
+        if read message <"$PIPE"; then
             if [[ $message == "TERM" ]]; then
                 echo "USER 1 exits chat"
                 break
@@ -18,9 +20,9 @@ read_message() {
     exit 0
 }
 
-write_message() {
+write_message{
+    echo -n "enter message: "
     while true; do
-        echo "enter message:"
         read message
         if [[ $message == "TERM" ]]; then
             echo "$message" >"$PIPE"
