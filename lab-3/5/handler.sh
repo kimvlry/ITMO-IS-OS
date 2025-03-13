@@ -18,10 +18,10 @@
 
 #!/bin/bash
 
-PIPE="pipe"
 MODE="+"
 NUM=1
 
+PIPE="pipe"
 if [ ! -p "$PIPE" ]; then
     mkfifo "$PIPE"
 fi
