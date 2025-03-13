@@ -6,14 +6,20 @@
 #!/bin/bash
 
 if [ ! -f "PIDs.txt" ]; then
-    if ! ps -p "$third" >/dev/null; then
+    echo "no PIDs.txt"
+    exit
 fi
+
+first=$(head -n 1 "PIDs.txt")
+third=$(sed -n '3p' "PIDs.txt")
+ps -p "$first" || { echo "first PID not found"; exit }
+ps -p "$third" || { echo; "third PID not found"; exit }
 
 percent_limit=10
 
 {
     while true; do
-        cpu_usage=$(top -bn1 -p $first | tail +8 | awk '{print $9}')
+        cpu_usage=$(top -bn1 -p $first | tail -n +8 | awk '{print $9}')
         cpu_usage=${cpu_usage%.*}
         current_nice=$(top -bn1 -p $first | tail -n +8 | awk '{print $4}')
         
