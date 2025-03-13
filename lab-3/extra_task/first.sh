@@ -5,35 +5,38 @@ if [ ! -p "$PIPE" ]; then
     mkfifo "$PIPE"
 fi
 
-read() {
+read_message() {
     while true; do
-        if read message <"$PIPE"; then 
-            if [[ $message == "TERM" ]]; then       
-                echo "they exit chat"
+        if read -t 1 message <"$PIPE"; then
+            if [[ $message == "TERM" ]]; then
+                echo "Пользователь 2 вышел из чата."
                 break
             fi
-            echo "THEM: $message"
+            echo "Пользователь 2: $message"
         fi
     done
+    exit 0
 }
 
-write() {
+write_message() {
     while true; do
-        echo "enter your message:"
+        echo "Введите ваше сообщение:"
         read message
         if [[ $message == "TERM" ]]; then
-            echo $message>$PIPE
+            echo "$message" >"$PIPE"
             break
         fi
-        echo "$message">$PIPE
+        echo "$message" >"$PIPE"
     done
-}    
+    exit 0
+}
 
-echo "USER2 is connected">$PIPE
-echo "enter TERM to exit chat"
+echo "Пользователь 1 подключен к чату."
+echo "Введите 'TERM', чтобы выйти из чата."
 
-write & 
-read &
+read_message &
+write_message &
 
-wait 
-rm -rf $PIPE
+wait
+
+rm -f "$PIPE"
