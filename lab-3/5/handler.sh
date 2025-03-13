@@ -22,6 +22,10 @@ PIPE="pipe"
 MODE="+"
 NUM=1
 
+if [ ! -p "$PIPE" ]; then
+    mkfifo "$PIPE"
+fi
+
 while true; do
     read INPUT < $PIPE
     if [[ "$INPUT" == "INVALID" ]] || [[ "$INPUT" == "QUIT" ]] ; then
