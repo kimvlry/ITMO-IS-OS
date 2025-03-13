@@ -9,10 +9,10 @@ read_message() {
     while true; do
         if read -t 1 message <"$PIPE"; then
             if [[ $message == "TERM" ]]; then
-                echo "Пользователь 1 вышел из чата."
+                echo "USER 1 exits chat"
                 break
             fi
-            echo "Пользователь 1: $message"
+            echo "USER1: $message"
         fi
     done
     exit 0
@@ -20,7 +20,7 @@ read_message() {
 
 write_message() {
     while true; do
-        echo "Введите ваше сообщение:"
+        echo "enter message:"
         read message
         if [[ $message == "TERM" ]]; then
             echo "$message" >"$PIPE"
@@ -31,8 +31,8 @@ write_message() {
     exit 0
 }
 
-echo "Пользователь 2 подключен к чату."
-echo "Введите 'TERM', чтобы выйти из чата."
+echo "chat is running"
+echo "enter 'TERM' to exit"
 
 write_message &
 read_message &
