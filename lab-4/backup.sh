@@ -28,3 +28,31 @@
 #    предыдущей версии этого файла
 
 #!/bin/bash
+
+# a
+today=$(date +"%Y-%m-%d")
+expired_date=$(date -I -d "$timestamp - 7 days")
+backup=0
+
+current=$today
+while [ $current != $expired_date ]; do
+    path="Backup-${current}"
+    if [ -d "$path" ]; then
+        backup=$path
+        break
+    fi
+    current=$(date -I -d "$current - 1 day")
+done;
+
+# b
+if [ $backup == 0 ]; then
+    backup="Backup-${today}"
+    mkdir ~/home/user/"$backup"
+    backup_report="~/home/user/backup-report"
+
+    backup_report < "${today} : Created backup file ${backup}"
+    cp -rv ~/home/user/source/ ~/home/user/"$backup" | awk -F"'" '{print $2}' >> $backup_report
+    exit 0
+fi
+
+# c
