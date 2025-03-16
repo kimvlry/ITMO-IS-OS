@@ -44,15 +44,18 @@ while [ $current != $expired_date ]; do
     current=$(date -I -d "$current - 1 day")
 done;
 
+source_path="~/home/user/source/"
+backup_report="~/home/user/backup-report"
 # b
 if [ $backup == 0 ]; then
     backup="Backup-${today}"
-    mkdir ~/home/user/"$backup"
-    backup_report="~/home/user/backup-report"
-
+    mkdir ~/home/user/"$backup
     backup_report < "${today} : Created backup file ${backup}"
-    cp -rv ~/home/user/source/ ~/home/user/"$backup" | awk -F"'" '{print $2}' >> $backup_report
+    cp -rv "$source_path" ~/home/user/"$backup" | awk -F"'" '{print $2}' >> $backup_report
     exit 0
 fi
 
+for file_name in $source_path; do
+    if [ ! -e "${backup}/$filename" ]; then 
+        cp $file_name "~/home/user/$backup"
 # c
