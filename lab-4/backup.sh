@@ -37,6 +37,8 @@ user=$(logname)
 echo "input source folder name (relative to root folder)"
 read source
 
+if [[ "${source}" != */ ]] && $source="${source}/"
+
 today=$(date +"%Y-%m-%d")
 expired_date=$(date -I -d "$today - 7 days")
 
@@ -61,7 +63,7 @@ if [ -z "$backup_dir" ]; then
     backup_dir="/home/$user/Backup-${today}"
     mkdir "$backup_dir"
     echo -e "${today} : Created backup file $(basename "${backup_dir}") \n COPIED:" > "$backup_report"
-    cp -rv "$source_path" "${backup_dir}" | awk -F"'" '{print $2}' >> "$backup_report"
+    cp -rv "${source_path}." "${backup_dir}/" | awk -F"'" '{print $2}' >> "$backup_report"
     echo -e "\n" >> "$backup_report"
     exit 0
 fi
@@ -94,4 +96,3 @@ done
 } >> "$backup_report"
 
 rm -rf "$tmp"
-
