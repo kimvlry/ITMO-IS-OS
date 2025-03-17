@@ -33,7 +33,7 @@
 
 #!/bin/bash
 
-echo -n "Input source folder absolute path: "
+echo -n "input source folder absolute path: "
 read source
 
 source_path=$(realpath "$source")
@@ -55,46 +55,49 @@ for i in {0..6}; do
 done
 
 backup_report="$HOME/backup-report"
-temp_file=$(mktemp)
+tmp=$(mktemp)
 
 if [ -z "$backup_directory" ]; then
     backup_directory="$HOME/Backup-$today"
     mkdir -p "$backup_directory"
     {
-        printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_directory"
+        printf "%s : created backup directory %s\nCOPIED:\n" "$today" "$backup_directory"
         cp -rp "$source_path/"* "$backup_directory/"
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
-cd "$source_path" || exit 1
+cd "$source_path" || { echo "couldn't change dir to ${source_path}"; exit 1 }
 
 find . -type f | while read -r file; do
     relative_file="${file#./}"
     destination_file="$backup_directory/$relative_file"
+
     mkdir -p "$(dirname "$destination_file")"
+    
     if [ ! -e "$destination_file" ]; then
         cp -p "$file" "$destination_file"
-        echo "ADD: $relative_file" >> "$temp_file"
+        echo "ADD: $relative_file" >> "$tmp"
     else
         source_file_size=$(stat -c %s "$file")
         backup_file_size=$(stat -c %s "$destination_file")
+
         if [ "$source_file_size" -ne "$backup_file_size" ]; then
             mv "$destination_file" "$destination_file.$today"
             cp -p "$file" "$destination_file"
-            echo "UPD: $relative_file $relative_file.$today" >> "$temp_file"
+            echo "UPD: $relative_file $relative_file.$today" >> "$tmp"
         fi
     fi
 done
 
-if [ -s "$temp_file" ]; then
+if [ -s "$tmp" ]; then
     {
-        printf "%s : Changes in %s:\n" "$today" "$backup_directory"
-        cat "$temp_file"
+        printf "%s : changes in %s:\n" "$today" "$backup_directory"
+        cat "$tmp"
         printf "\n"
     } >> "$backup_report"
 fi
 
-rm -f "$temp_file"
+rm -f "$tmp"
 
