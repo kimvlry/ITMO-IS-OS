@@ -34,68 +34,68 @@
 #!/bin/bash
 
 user=$(logname)
-echo "Input source folder path relative to root (e.g., ITMO/lab-4/test):"
+echo "Input source folder path (relative to home directory, e.g., ITMO/lab-4/test):"
 read source
 
 [[ "${source}" != */ ]] && source="${source}/"
+source_path="$HOME/${source}"
 
-source_path="home/$user/${source}"
+if [ ! -d "$source_path" ]; then
+    echo "Ошибка: Директория $source_path не существует."
+    exit 1
+fi
 
 today=$(date +"%Y-%m-%d")
-expired_date=$(date -I -d "$today - 7 days")
-
 backup_dir=""
 
 for i in {0..6}; do
     check_date=$(date -I -d "$today - $i days")
-    dir="/home/$user/Backup-$check_date"
+    dir="$HOME/Backup-$check_date"
     if [ -d "$dir" ]; then
         backup_dir="$dir"
         break
     fi
 done
 
-backup_report="/home/$user/backup-report"
+backup_report="$HOME/backup-report"
 tmp=$(mktemp)
 
-if [ ! -d "$source_path" ]; then
-    echo "error: $source_path doesn't exist"
-    exit 1
-fi
-
 if [ -z "$backup_dir" ]; then
-    backup_dir="/home/$user/Backup-$today"
+    backup_dir="$HOME/Backup-$today"
     mkdir -p "$backup_dir"
     {
         printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
-        find "$source_path" -type f -exec cp -v {} "$backup_dir/" \; | awk -F"'" '{print $2}'
+        rsync -av --relative "$source_path/./" "$backup_dir/" | awk -F'/' '{print $NF}'
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
-find "$source_path" -type f -print0 | while IFS= read -r -d $'\0' file; do
-    filename=$(basename "$file")
-    dest="$backup_dir/$filename"
+find "$source_path" -type f | while read -r file; do
+    rel_path="${file#$source_path}"
+    dest="$backup_dir/$rel_path"
+    mkdir -p "$(dirname "$dest")"
     if [ ! -e "$dest" ]; then
         cp -p "$file" "$dest"
-        echo "ADD: $filename" >> "$tmp"
+        echo "ADD: $rel_path" >> "$tmp"
     else
         old_size=$(stat -c %s "$dest")
         new_size=$(stat -c %s "$file")
         if [ "$old_size" -ne "$new_size" ]; then
             mv "$dest" "$dest.$today"
             cp -p "$file" "$dest"
-            echo "UPD: $filename $filename.$today" >> "$tmp"
+            echo "UPD: $rel_path $rel_path.$today" >> "$tmp"
         fi
     fi
 done
 
-{
+if [ -s "$tmp" ]; then
+    {
         printf "%s : Changes in %s:\n" "$today" "$backup_dir"
         grep "ADD:" "$tmp"
         grep "UPD:" "$tmp"
         printf "\n"
-} >> "$backup_report"
+    } >> "$backup_report"
+fi
 
 rm -f "$tmp"
