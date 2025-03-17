@@ -34,65 +34,68 @@
 #!/bin/bash
 
 user=$(logname)
-echo "input source folder name (relative to root folder)"
+echo "Input source folder path relative to root (e.g., ITMO/lab-4/test):"
 read source
 
-if [[ "${source}" != */ ]] && $source="${source}/"
+[[ "${source}" != */ ]] && source="${source}/"
+
+source_path="home/$user/${source}"
 
 today=$(date +"%Y-%m-%d")
 expired_date=$(date -I -d "$today - 7 days")
 
-current=$today
-while [ $current != $expired_date ]; do
-    dir="/home/$user/Backup-${current}"
+backup_dir=""
+
+for i in {0..6}; do
+    check_date=$(date -I -d "$today - $i days")
+    dir="/home/$user/Backup-$check_date"
     if [ -d "$dir" ]; then
-        backup_dir=$dir
+        backup_dir="$dir"
         break
     fi
-    current=$(date -I -d "$current - 1 day")
-done;
+done
 
-source_path="/home/$user/${source}"
 backup_report="/home/$user/backup-report"
+tmp=$(mktemp)
 
-if [ ! -f "$backup_report" ]; then
-    touch "$backup_report"
+if [ ! -d "$source_path" ]; then
+    echo "error: $source_path doesn't exist"
+    exit 1
 fi
 
 if [ -z "$backup_dir" ]; then
-    backup_dir="/home/$user/Backup-${today}"
-    mkdir "$backup_dir"
-    echo -e "${today} : Created backup file $(basename "${backup_dir}") \n COPIED:" > "$backup_report"
-    cp -rv "${source_path}." "${backup_dir}/" | awk -F"'" '{print $2}' >> "$backup_report"
-    echo -e "\n" >> "$backup_report"
+    backup_dir="/home/$user/Backup-$today"
+    mkdir -p "$backup_dir"
+    {
+        printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
+        find "$source_path" -type f -exec cp -v {} "$backup_dir/" \; | awk -F"'" '{print $2}'
+        printf "\n"
+    } >> "$backup_report"
     exit 0
 fi
 
-tmp=$(mktemp)
-touch "$tmp"
 find "$source_path" -type f -print0 | while IFS= read -r -d $'\0' file; do
     filename=$(basename "$file")
-    if [ ! -e "$backup_dir/${filename}" ]; then
-        cp "${file}" "$backup_dir/"
-        echo "ADD: ${file}" >> tmp
+    dest="$backup_dir/$filename"
+    if [ ! -e "$dest" ]; then
+        cp -p "$file" "$dest"
+        echo "ADD: $filename" >> "$tmp"
     else
-        old_size=$(stat -c %s "${backup_dir}/${filename}")
-        new_size=$(stat -c %s "${file}")
-        if [[ $old_size != $new_size ]]; then
-            old_name="${filename}"
-            new_name="${filename}.${today}"
-            mv "${backup_dir}/${old_name}" "${backup_dir}/${new_name}"
-            cp "${source_path}/${old_name}" "${backup_dir}/${old_name}"
-            echo "UPD: ${old_name} ${new_name}" >> "$tmp"
+        old_size=$(stat -c %s "$dest")
+        new_size=$(stat -c %s "$file")
+        if [ "$old_size" -ne "$new_size" ]; then
+            mv "$dest" "$dest.$today"
+            cp -p "$file" "$dest"
+            echo "UPD: $filename $filename.$today" >> "$tmp"
         fi
     fi
 done
 
 {
-    echo "${today} : ${source_path} was modified:"
-    grep "ADD:" tmp
-    grep "UPD:" tmp 
-    echo -e "\n" 
+        printf "%s : Changes in %s:\n" "$today" "$backup_dir"
+        grep "ADD:" "$tmp"
+        grep "UPD:" "$tmp"
+        printf "\n"
 } >> "$backup_report"
 
-rm -rf "$tmp"
+rm -f "$tmp"
