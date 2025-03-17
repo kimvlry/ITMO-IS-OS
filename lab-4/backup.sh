@@ -33,53 +33,51 @@
 
 #!/bin/bash
 
-# a
+user=$(logname)
 echo "input source folder name"
 read source
 
 today=$(date +"%Y-%m-%d")
 expired_date=$(date -I -d "$timestamp - 7 days")
-backup=0
+backup_dir=0
 
 current=$today
 while [ $current != $expired_date ]; do
-    path="Backup-${current}"
-    if [ -d "$path" ]; then
-        backup=$path
+    dir="/home/$user/Backup-${current}"
+    if [ -d "$dir" ]; then
+        $backup_dir=$dir
         break
     fi
     current=$(date -I -d "$current - 1 day")
 done;
 
-source_path="~/${source}/"
-backup_report="~/backup-report"
+source_path="/home/$user/${source}/"
+backup_report="/home/$user/backup-report"
 
 if [ ! -f $backup_report ]; then
     touch $backup_report
 fi
 
 if [ $backup == 0 ]; then
-    backup="Backup-${today}"
-    mkdir "~/$backup"
-    echo "${today} : Created backup file ${backup} \n COPIED:" > $backup_report
-    cp -rv "$source_path" "~/${backup}" | awk -F"'" '{print $2}\n' >> $backup_report
-    echo "\n" >> $backup_report
+    $backup_dir="/home/$user/Backup-${today}"
+    mkdir "$backup_dir"
+    echo -e "${today} : Created backup file $(basename ${backup_dir}) \n COPIED:" > $backup_report
+    cp -rv "$source_path" "${backup_dir}" | awk -F"'" '{print $2}\n' >> $backup_report
+    echo -e "\n" >> $backup_report
     exit 0
 fi
 
-backup_dir="~/${backup}"
-
 touch tmp
-for filename in $source_path; do
-    if [ ! -e "$backup_dir/${filename}"]; then
-        cp "${source_path}/${filename}" "$backup_dir"
-        echo "ADD: ${filename}" >> tmp
+find "$source_path" -type -f -print0 | while IFS= read -r -d $'/0' file; do
+    if [ ! -e "$backup_dir/${file}"]; then
+        cp "${source_path}/${file}" "$backup_dir"
+        echo "ADD: ${file}" >> tmp
     else
-        old_size=`wc -c "${backup_dir}/${filename}"`
-        new_size=`wc -c "${source_path}/${filename}"`
+        old_size=`wc -c "${backup_dir}/${file}"`
+        new_size=`wc -c "${source_path}/${file}"`
         if [[ $old_size != $new_size ]]; then
-            old_name="${filename}"
-            new_name="${filename}.${today}"
+            old_name="${file}"
+            new_name="${file}.${today}"
             mv "${backup_dir}/${old_name}" "${backup_dir}/${new_name}"
             mv "${source_path}/${old_name}" "${backup_dir}/${old_name}"
             echo "UPD: ${old_name} ${new_name}" >> tmp
@@ -92,5 +90,5 @@ grep "ADD:" tmp >> $backup_report
 grep "UPD:" tmp >> $backup_report
 echo "\n" >> $backup_report
 
-rm rf tmp
+rm -rf tmp
 
