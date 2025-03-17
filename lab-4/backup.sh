@@ -57,7 +57,7 @@ if [ ! -f "$backup_report" ]; then
     touch "$backup_report"
 fi
 
-if [ -z $backup_dir ]; then
+if [ -z "$backup_dir" ]; then
     backup_dir="/home/$user/Backup-${today}"
     mkdir "$backup_dir"
     echo -e "${today} : Created backup file $(basename "${backup_dir}") \n COPIED:" > "$backup_report"
@@ -66,21 +66,22 @@ if [ -z $backup_dir ]; then
     exit 0
 fi
 
-touch tmp
-find "$source_path" -type f -print0 | while IFS= read -r -d $'/0' file; do
+tmp=$(mktemp)
+touch "$tmp"
+find "$source_path" -type f -print0 | while IFS= read -r -d $'\0' file; do
     filename=$(basename "$file")
     if [ ! -e "$backup_dir/${filename}" ]; then
-        cp "${source_path}/${filename}" "$backup_dir"
+        cp "${file}" "$backup_dir/"
         echo "ADD: ${file}" >> tmp
     else
-        old_size=$(stat -c %s "${backup_dir}/${file}")
-        new_size=$(stat -c %s "${source_path}/${file}")
+        old_size=$(stat -c %s "${backup_dir}/${filename}")
+        new_size=$(stat -c %s "${file}")
         if [[ $old_size != $new_size ]]; then
             old_name="${filename}"
             new_name="${filename}.${today}"
             mv "${backup_dir}/${old_name}" "${backup_dir}/${new_name}"
             cp "${source_path}/${old_name}" "${backup_dir}/${old_name}"
-            echo "UPD: ${old_name} ${new_name}" >> tmp
+            echo "UPD: ${old_name} ${new_name}" >> "$tmp"
         fi
     fi
 done
@@ -92,5 +93,5 @@ done
     echo -e "\n" 
 } >> "$backup_report"
 
-rm -rf tmp
+rm -rf "$tmp"
 
