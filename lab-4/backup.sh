@@ -33,13 +33,10 @@
 
 #!/bin/bash
 
-user=$(logname)
-echo "Input source folder path (relative to home directory, e.g., ITMO/lab-4/test):"
+echo "Input source folder absolute path (e.g., /home/user/ITMO/lab-4/test):"
 read source
 
-full_path="$HOME/${source}"
-source_path=$(realpath "$full_path")
-
+source_path=$(realpath "$source")
 if [ ! -d "$source_path" ]; then
     echo "Ошибка: Директория $source_path не существует."
     exit 1
@@ -76,7 +73,7 @@ fi
 rsync -av --ignore-existing ./ "$backup_dir/" --out-format="ADD: %f" > "$tmp"
 
 find . -type f | while read -r file; do
-    rel_file="${file#./}" 
+    rel_file="${file#./}"  
     dest="$backup_dir/$rel_file"
     if [ -f "$dest" ]; then
         src_size=$(stat -c %s "$file")
