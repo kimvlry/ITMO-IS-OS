@@ -33,65 +33,68 @@
 
 #!/bin/bash
 
-echo "Input source folder absolute path (e.g., /home/user/ITMO/lab-4/test):"
+echo -n "Input source folder absolute path: "
 read source
 
 source_path=$(realpath "$source")
 if [ ! -d "$source_path" ]; then
-    echo "Ошибка: Директория $source_path не существует."
+    echo "error: directory $source_path doesn't exist"
     exit 1
 fi
 
 today=$(date +"%Y-%m-%d")
-backup_dir=""
+backup_directory=""
 
 for i in {0..6}; do
     check_date=$(date -I -d "$today - $i days")
-    candidate="$HOME/Backup-$check_date"
-    if [ -d "$candidate" ]; then
-        backup_dir="$candidate"
+    current="$HOME/Backup-$check_date"
+    if [ -d "$current" ]; then
+        backup_directory="$current"
         break
     fi
 done
 
 backup_report="$HOME/backup-report"
-tmp=$(mktemp)
+temp_file=$(mktemp)
 
-cd "$source_path" || exit 1
-
-if [ -z "$backup_dir" ]; then
-    backup_dir="$HOME/Backup-$today"
-    mkdir -p "$backup_dir"
+if [ -z "$backup_directory" ]; then
+    backup_directory="$HOME/Backup-$today"
+    mkdir -p "$backup_directory"
     {
-        printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
-        rsync -av ./ "$backup_dir/"
+        printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_directory"
+        cp -rp "$source_path/"* "$backup_directory/"
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
-rsync -av --ignore-existing ./ "$backup_dir/" --out-format="ADD: %f" > "$tmp"
+cd "$source_path" || exit 1
 
 find . -type f | while read -r file; do
-    rel_file="${file#./}"  
-    dest="$backup_dir/$rel_file"
-    if [ -f "$dest" ]; then
-        src_size=$(stat -c %s "$file")
-        dest_size=$(stat -c %s "$dest")
-        if [ "$src_size" -ne "$dest_size" ]; then
-            mv "$dest" "$dest.$today"
-            cp -p "$file" "$dest"
-            echo "UPD: $rel_file $rel_file.$today" >> "$tmp"
+    relative_file="${file#./}"
+    destination_file="$backup_directory/$relative_file"
+    mkdir -p "$(dirname "$destination_file")"
+    if [ ! -e "$destination_file" ]; then
+        cp -p "$file" "$destination_file"
+        echo "ADD: $relative_file" >> "$temp_file"
+    else
+        source_file_size=$(stat -c %s "$file")
+        backup_file_size=$(stat -c %s "$destination_file")
+        if [ "$source_file_size" -ne "$backup_file_size" ]; then
+            mv "$destination_file" "$destination_file.$today"
+            cp -p "$file" "$destination_file"
+            echo "UPD: $relative_file $relative_file.$today" >> "$temp_file"
         fi
     fi
 done
 
-if [ -s "$tmp" ]; then
+if [ -s "$temp_file" ]; then
     {
-        printf "%s : Changes in %s:\n" "$today" "$backup_dir"
-        cat "$tmp"
+        printf "%s : Changes in %s:\n" "$today" "$backup_directory"
+        cat "$temp_file"
         printf "\n"
     } >> "$backup_report"
 fi
 
-rm -f "$tmp"
+rm -f "$temp_file"
+
