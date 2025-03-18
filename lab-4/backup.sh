@@ -37,9 +37,7 @@ user=$(logname)
 echo "Input source folder path (relative to home directory, e.g., ITMO/lab-4/test):"
 read source
 
-full_path="$HOME/${source}"
-source_path=$(realpath "$full_path")
-
+source_path="$HOME/${source}"
 if [ ! -d "$source_path" ]; then
     echo "Ошибка: Директория $source_path не существует."
     exit 1
@@ -50,9 +48,9 @@ backup_dir=""
 
 for i in {0..6}; do
     check_date=$(date -I -d "$today - $i days")
-    dir="$HOME/Backup-$check_date"
-    if [ -d "$dir" ]; then
-        backup_dir="$dir"
+    candidate="$HOME/Backup-$check_date"
+    if [ -d "$candidate" ]; then
+        backup_dir="$candidate"
         break
     fi
 done
@@ -60,26 +58,28 @@ done
 backup_report="$HOME/backup-report"
 tmp=$(mktemp)
 
+cd "$source_path" || exit 1
+
 if [ -z "$backup_dir" ]; then
     backup_dir="$HOME/Backup-$today"
     mkdir -p "$backup_dir"
     {
         printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
-        rsync -av --exclude='.*' "$source_path/" "$backup_dir/"
+        rsync -av ./ "$backup_dir/"
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
-rsync -av --ignore-existing "$source_path/" "$backup_dir/" --out-format="ADD: %f" > "$tmp"
+rsync -av --ignore-existing ./ "$backup_dir/" --out-format="ADD: %f" > "$tmp"
 
-find "$source_path" -type f | while read -r file; do
-    rel_file="${file#$source_path/}"
+find . -type f | while read -r file; do
+    rel_file="${file#./}"
     dest="$backup_dir/$rel_file"
-    if [ -e "$dest" ]; then
-        old_size=$(stat -c %s "$dest")
-        new_size=$(stat -c %s "$file")
-        if [ "$old_size" -ne "$new_size" ]; then
+    if [ -f "$dest" ]; then
+        src_size=$(stat -c %s "$file")
+        dest_size=$(stat -c %s "$dest")
+        if [ "$src_size" -ne "$dest_size" ]; then
             mv "$dest" "$dest.$today"
             cp -p "$file" "$dest"
             echo "UPD: $rel_file $rel_file.$today" >> "$tmp"
@@ -96,5 +96,3 @@ if [ -s "$tmp" ]; then
 fi
 
 rm -f "$tmp"
-
-
