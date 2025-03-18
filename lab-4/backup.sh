@@ -38,7 +38,7 @@ echo "Input source folder path (relative to home directory, e.g., ITMO/lab-4/tes
 read source
 
 full_path="$HOME/${source}"
-source_path=$(realpath "$full_path")/  
+source_path=$(realpath "$full_path")
 
 if [ ! -d "$source_path" ]; then
     echo "Ошибка: Директория $source_path не существует."
@@ -60,29 +60,31 @@ done
 backup_report="$HOME/backup-report"
 tmp=$(mktemp)
 
+cd "$source_path" || exit 1 
+
 if [ -z "$backup_dir" ]; then
     backup_dir="$HOME/Backup-$today"
     mkdir -p "$backup_dir"
     {
         printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
-        cd "$source_path" && find . -type f -exec cp --parents -v {} "$backup_dir/" \;
+        find . -type f -exec cp --parents -v {} "$backup_dir/" \;
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
-cd "$source_path" && find . -type f | while read -r rel_file; do
+find . -type f | while read -r rel_file; do
     dest="$backup_dir/$rel_file"
     mkdir -p "$(dirname "$dest")"
     if [ ! -e "$dest" ]; then
-        cp -p "$source_path/$rel_file" "$dest"
+        cp -p "$rel_file" "$dest"
         echo "ADD: $rel_file" >> "$tmp"
     else
         old_size=$(stat -c %s "$dest")
-        new_size=$(stat -c %s "$source_path/$rel_file")
+        new_size=$(stat -c %s "$rel_file")
         if [ "$old_size" -ne "$new_size" ]; then
             mv "$dest" "$dest.$today"
-            cp -p "$source_path/$rel_file" "$dest"
+            cp -p "$rel_file" "$dest"
             echo "UPD: $rel_file $rel_file.$today" >> "$tmp"
         fi
     fi
