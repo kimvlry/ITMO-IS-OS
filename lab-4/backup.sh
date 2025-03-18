@@ -37,8 +37,8 @@ user=$(logname)
 echo "Input source folder path (relative to home directory, e.g., ITMO/lab-4/test):"
 read source
 
-[[ "${source}" != */ ]] && source="${source}/"
-source_path="$HOME/${source}"
+full_path="$HOME/${source}"
+source_path=$(realpath "$full_path")/  
 
 if [ ! -d "$source_path" ]; then
     echo "Ошибка: Директория $source_path не существует."
@@ -65,26 +65,25 @@ if [ -z "$backup_dir" ]; then
     mkdir -p "$backup_dir"
     {
         printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
-        rsync -av --relative "$source_path/./" "$backup_dir/" | awk -F'/' '{print $NF}'
+        cd "$source_path" && find . -type f -exec cp --parents -v {} "$backup_dir/" \;
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
-find "$source_path" -type f | while read -r file; do
-    rel_path="${file#$source_path}"
-    dest="$backup_dir/$rel_path"
+cd "$source_path" && find . -type f | while read -r rel_file; do
+    dest="$backup_dir/$rel_file"
     mkdir -p "$(dirname "$dest")"
     if [ ! -e "$dest" ]; then
-        cp -p "$file" "$dest"
-        echo "ADD: $rel_path" >> "$tmp"
+        cp -p "$source_path/$rel_file" "$dest"
+        echo "ADD: $rel_file" >> "$tmp"
     else
         old_size=$(stat -c %s "$dest")
-        new_size=$(stat -c %s "$file")
+        new_size=$(stat -c %s "$source_path/$rel_file")
         if [ "$old_size" -ne "$new_size" ]; then
             mv "$dest" "$dest.$today"
-            cp -p "$file" "$dest"
-            echo "UPD: $rel_path $rel_path.$today" >> "$tmp"
+            cp -p "$source_path/$rel_file" "$dest"
+            echo "UPD: $rel_file $rel_file.$today" >> "$tmp"
         fi
     fi
 done
