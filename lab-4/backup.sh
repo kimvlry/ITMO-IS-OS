@@ -60,30 +60,28 @@ done
 backup_report="$HOME/backup-report"
 tmp=$(mktemp)
 
-cd "$source_path" || exit 1  
-
 if [ -z "$backup_dir" ]; then
     backup_dir="$HOME/Backup-$today"
     mkdir -p "$backup_dir"
     {
         printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
-        find . -type f -exec cp -v {} "$backup_dir/" \;
+        rsync -av --exclude='.*' "$source_path/" "$backup_dir/"
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
-find . -type f | while read -r rel_file; do
-    dest="$backup_dir/$(basename "$rel_file")"
-    if [ ! -e "$dest" ]; then
-        cp -p "$rel_file" "$dest"
-        echo "ADD: $rel_file" >> "$tmp"
-    else
+rsync -av --ignore-existing "$source_path/" "$backup_dir/" --out-format="ADD: %f" > "$tmp"
+
+find "$source_path" -type f | while read -r file; do
+    rel_file="${file#$source_path/}"
+    dest="$backup_dir/$rel_file"
+    if [ -e "$dest" ]; then
         old_size=$(stat -c %s "$dest")
-        new_size=$(stat -c %s "$rel_file")
+        new_size=$(stat -c %s "$file")
         if [ "$old_size" -ne "$new_size" ]; then
             mv "$dest" "$dest.$today"
-            cp -p "$rel_file" "$dest"
+            cp -p "$file" "$dest"
             echo "UPD: $rel_file $rel_file.$today" >> "$tmp"
         fi
     fi
@@ -92,11 +90,11 @@ done
 if [ -s "$tmp" ]; then
     {
         printf "%s : Changes in %s:\n" "$today" "$backup_dir"
-        grep "ADD:" "$tmp"
-        grep "UPD:" "$tmp"
+        cat "$tmp"
         printf "\n"
     } >> "$backup_report"
 fi
 
 rm -f "$tmp"
+
 
