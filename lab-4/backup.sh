@@ -60,22 +60,21 @@ done
 backup_report="$HOME/backup-report"
 tmp=$(mktemp)
 
-cd "$source_path" || exit 1 
+cd "$source_path" || exit 1  
 
 if [ -z "$backup_dir" ]; then
     backup_dir="$HOME/Backup-$today"
     mkdir -p "$backup_dir"
     {
         printf "%s : Created backup directory %s\nCOPIED:\n" "$today" "$backup_dir"
-        find . -type f -exec cp --parents -v {} "$backup_dir/" \;
+        find . -type f -exec cp -v {} "$backup_dir/" \;
         printf "\n"
     } >> "$backup_report"
     exit 0
 fi
 
 find . -type f | while read -r rel_file; do
-    dest="$backup_dir/$rel_file"
-    mkdir -p "$(dirname "$dest")"
+    dest="$backup_dir/$(basename "$rel_file")"
     if [ ! -e "$dest" ]; then
         cp -p "$rel_file" "$dest"
         echo "ADD: $rel_file" >> "$tmp"
@@ -100,3 +99,4 @@ if [ -s "$tmp" ]; then
 fi
 
 rm -f "$tmp"
+
