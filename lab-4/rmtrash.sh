@@ -11,3 +11,24 @@
 #    содержащая полный исходный путь к удаленному файлу и имя созданной жесткой ссылки.
 
 #!/bin/bash
+
+trash="$HOME/.trash"
+
+echo "Input file name. File must be located in current directory"
+read file
+
+if [[ "$(dirname "$file")" != "." ]]; then 
+    echo "$file" not found in current dir
+    exit 1
+fi
+
+if [ ! -d "$trash" ]; then
+    mkdir "$trash"
+    echo "Created ${trash}"
+fi
+
+links_count=$(stat -c %h "$file")
+new_link_name="${trash}/${file}_$(( links_count - 1 ))"
+ln "$file" "$new_link_name" && echo "created hard link: $new_link_name"
+
+
