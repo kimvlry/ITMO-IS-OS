@@ -32,7 +32,7 @@ fi
 links_count=$(stat -c %h "$file")
 new_link_name="${trash}/${file}_$(( links_count - 1 ))"
 
-ln "$original" "$new_link_name" && rm -rf "$original" && {
+ln "$original" "$new_link_name" && rm "$original" && {
     echo "$(date)"
     echo "removed $original"
     echo -e "created hard link: $new_link_name\n"
