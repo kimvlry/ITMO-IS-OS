@@ -13,9 +13,11 @@
 #!/bin/bash
 
 trash="$HOME/.trash"
+log="$HOME/.trash.log"
 
 echo "Input file name. File must be located in current directory"
 read file
+original=$(realpath "$file")
 
 if [[ "$(dirname "$file")" != "." ]]; then 
     echo "$file" not found in current dir
@@ -29,6 +31,11 @@ fi
 
 links_count=$(stat -c %h "$file")
 new_link_name="${trash}/${file}_$(( links_count - 1 ))"
-ln "$file" "$new_link_name" && echo "created hard link: $new_link_name"
+
+ln "$original" "$new_link_name" && rm -rf "$original" && {
+    echo "$(date)"
+    echo "removed $original"
+    echo -e "created hard link: $new_link_name\n"
+} >> "$log"
 
 
