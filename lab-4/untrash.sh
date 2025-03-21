@@ -15,32 +15,68 @@
 
 #!/bin/bash
 
-log="$HOME/.trash.log"
-if [[ ! -f "$log" ]]; then
+logfile="$HOME/.trash.log"
+
+log() {
+    {
+        echo $(date)
+        echo "removed $1"
+        echo -e "created hard link: $2\n"
+    } >> "$logfile"
+}
+
+if [[ ! -f "$logfile" ]]; then
     echo "there's no trash log"
     exit 1
 fi
 
 echo "input name of file to restore"
-read filename
+read original_filename
 
-while IFS= read -r line; do
+while IFS=" " read -r line; do
     # format: removed /path/ORIGINAL
     #         created hard link: /path/LINK
-    if [[ "$line" == *"removed"*"$filename"* ]]; then
-        echo "$line"
-        if IFS= read -r nextline && [[ "$nextline" == *"created hard link:"* ]]; then 
-            link_name=$(echo "$line" | awk -F': ' '{print $2}')
-            echo "restore $link_name? y/n"
-            dir=$(dirname "$link_name")
-            original_name=$(basename "$link_name" | sed -E 's/_[0-9]+//')
+    if [[ "$line" == *"$original_filename"* ]]; then
+        original=$(echo "$line" | sed -E 's/^removed //')
+        IFS=" " read -r nextline
+        if [[ "$nextline" == *"created hard link:"* ]]; then
+            trash_filename=$(echo "$nextline" | cut -d':' -f2- | xargs)
+            echo "restore $original? (y/n)"
+            read option </dev/tty
 
-            read input 
-            if [[ "$input" == "y" ]]; then
-                echo "$original_name"
-                echo "$dir"
+            if [[ "$option" == "y" ]]; then 
+                original_dest=$(dirname "$original")
+                original_filename=$(basename "$original")
+
+                if [[ ! -d "$original_dest" ]]; then
+                    ln "$trash_filename" "$HOME"
+                    log "$trash_filename" "$HOME"
+                    rm "$trash_filename"
+                    echo "folder $original_dest doesn't exist. Restored $original_filename into home directory instead."
+                    exit 0
+                fi
+
+                if [[ -f "$original" ]]; then
+                    name="$original_filename"
+                    while true; do
+                        echo "file named '$name' already exists in $original_dest."
+                        echo -n "input different name: "
+                        read newname
+                        if [[ ! -f "$original_dest/$name" ]]; then
+                            ln "$trash_filename" "$original_dest/$name"
+                            rm "$trash_filename"
+                            log "$trash_filename" "$original_dest/$name"
+                            echo "Restored $original_filename" into "$original_dest/$name"
+                            exit 0
+                        fi
+                    done
+                fi
+                
+                ln "$trash_filename" "$original_dest"
+                rm "$trash_filename"
+                log "$trash_filename" "$original_dest"
             fi
         fi
     fi
-done < "$log"
+done < "$logfile"
 
