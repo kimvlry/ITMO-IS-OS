@@ -30,53 +30,60 @@ if [[ ! -f "$logfile" ]]; then
     exit 1
 fi
 
-echo "input name of file to restore"
+echo "Input name of file to restore:"
 read original_filename
 
+restore_file() {
+    local trash_filename=$1
+    local original_dest=$2
+    local original_filename=$3
+
+    if [[ ! -d "$original_dest" ]]; then
+        ln "$trash_filename" "$HOME"
+        log "$trash_filename" "$HOME/$original_filename"
+        rm "$trash_filename"
+        echo "Folder $original_dest doesn't exist. Restored $original_filename into home directory instead."
+        return
+    fi
+
+    if [[ -f "$original_dest/$original_filename" ]]; then
+        while true; do
+            echo "File named '$original_filename' already exists in $original_dest."
+            echo -n "Input different name: "
+            read newname
+            if [[ ! -f "$original_dest/$newname" ]]; then
+                ln "$trash_filename" "$original_dest/$newname"
+                rm "$trash_filename"
+                log "$trash_filename" "$original_dest/$newname"
+                echo "Restored $original_filename into $original_dest/$newname"
+                return
+            fi
+        done
+    fi
+
+    ln "$trash_filename" "$original_dest/$original_filename"
+    rm "$trash_filename"
+    log "$trash_filename" "$original_dest/$original_filename"
+    echo "Restored $original_filename into $original_dest"
+}
+
 while IFS=" " read -r line; do
-    # format: removed /path/ORIGINAL
-    #         created hard link: /path/LINK
+    # Format: removed /path/ORIGINAL
+    #         created hard link: /path/HARDLINK
     if [[ "$line" == *"$original_filename"* ]]; then
-        original=$(echo "$line" | sed -E 's/^removed //')
+        original_path=$(echo "$line" | sed -E 's/^removed //')
         IFS=" " read -r nextline
         if [[ "$nextline" == *"created hard link:"* ]]; then
             trash_filename=$(echo "$nextline" | cut -d':' -f2- | xargs)
-            echo "restore $original? (y/n)"
+            echo "Restore $original_filename from $trash_filename? (y/n)"
             read option </dev/tty
 
-            if [[ "$option" == "y" ]]; then 
-                original_dest=$(dirname "$original")
-                original_filename=$(basename "$original")
+            if [[ "$option" == "y" ]]; then
+                original_dest=$(dirname "$original_path")
+                original_filename=$(basename "$original_path")
 
-                if [[ ! -d "$original_dest" ]]; then
-                    ln "$trash_filename" "$HOME"
-                    log "$trash_filename" "$HOME"
-                    rm "$trash_filename"
-                    echo "folder $original_dest doesn't exist. Restored $original_filename into home directory instead."
-                    exit 0
-                fi
-
-                if [[ -f "$original" ]]; then
-                    name="$original_filename"
-                    while true; do
-                        echo "file named '$name' already exists in $original_dest."
-                        echo -n "input different name: "
-                        read newname
-                        if [[ ! -f "$original_dest/$name" ]]; then
-                            ln "$trash_filename" "$original_dest/$name"
-                            rm "$trash_filename"
-                            log "$trash_filename" "$original_dest/$name"
-                            echo "Restored $original_filename" into "$original_dest/$name"
-                            exit 0
-                        fi
-                    done
-                fi
-                
-                ln "$trash_filename" "$original_dest"
-                rm "$trash_filename"
-                log "$trash_filename" "$original_dest"
+                restore_file "$trash_filename" "$original_dest" "$original_filename"
             fi
         fi
     fi
 done < "$logfile"
-
