@@ -17,7 +17,7 @@ collect_io() {
             arr[$pid]=$bytes
         fi 
     # NF is the last value in string (read_bytes) 
-    done < <(awk '/read_bytes/ {print FILENAME, $NF}' /proc/[0-9]*/io 2>/dev/null)
+    done < <(awk '/read_bytes/ {print FILENAME, $NF}' /proc/[0-9]*/io)
 }
 
 collect_io before
@@ -38,7 +38,7 @@ done
 # inner: for all keys (PIDs): echo values (bytes) and sort 'em, increasing
 # outer: takes top 3 PIDs (`cut -d' '-f1`) of inner loop
 for pid in $(for p in "${!diff[@]}"; do echo $p "${diff[$p]}"; done | sort -rn -k2 | head -n 3 | cut -d' ' -f1); do
-    cmd=$(ps -o cmd= -p "$pid" 2>/dev/null);
+    cmd=$(ps -o cmd= -p "$pid");
     [[ -z $cmd ]] && cmd="[terminated]"
     echo "$pid : $cmd : ${diff[$pid]}";
 done
