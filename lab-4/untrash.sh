@@ -15,6 +15,7 @@
 
 #!/bin/bash
 
+trash="$HOME/.trash"
 logfile="$HOME/.trash.log"
 
 log() {
@@ -37,6 +38,11 @@ restore_file() {
     local trash_filename=$1
     local original_dest=$2
     local original_filename=$3
+
+    if [[ ! -f "$trash_filename" ]]; then 
+        echo "File $(basename $trash_filename) couldn't be found in.trash!"
+        return
+    fi
 
     if [[ ! -d "$original_dest" ]]; then
         ln "$trash_filename" "$HOME"
