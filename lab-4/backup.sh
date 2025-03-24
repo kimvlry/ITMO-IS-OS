@@ -30,7 +30,7 @@
 #    - строки с именами добавленных файлов с существовавшими в действующем каталоге
 #    резервного копирования именами с указанием через пробел нового имени, присвоенного
 #    предыдущей версии этого файла
-
+#
 #!/bin/bash
 
 echo -n "input source folder absolute path: "
@@ -38,7 +38,7 @@ read source
 
 source_path=$(realpath "$source")
 if [ ! -d "$source_path" ]; then
-    echo "error: directory $source_path doesn't exist"
+    echo "error: directory $source_path doesn't exist."
     exit 1
 fi
 
@@ -59,16 +59,17 @@ tmp=$(mktemp)
 
 if [ -z "$backup_directory" ]; then
     backup_directory="$HOME/Backup-$today"
-    mkdir -p "$backup_directory"
+    mkdir -p "$backup_directory" || { echo "error: could not create directory $backup_directory"; exit 1; }
     {
         printf "%s : created backup directory %s\nCOPIED:\n" "$today" "$backup_directory"
         cp -rp "$source_path/"* "$backup_directory/"
         printf "\n"
     } >> "$backup_report"
+    echo "backup directory created at $backup_directory."
     exit 0
 fi
 
-cd "$source_path" || { echo "couldn't change dir to ${source_path}"; exit 1 }
+cd "$source_path" || { echo "error: couldn't change directory to ${source_path}"; exit 1; }
 
 find . -type f | while read -r file; do
     relative_file="${file#./}"
@@ -101,3 +102,4 @@ fi
 
 rm -f "$tmp"
 
+echo "backup completed."
