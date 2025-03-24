@@ -26,14 +26,6 @@ log() {
     } >> "$logfile"
 }
 
-if [[ ! -f "$logfile" ]]; then
-    echo "there's no trash log"
-    exit 1
-fi
-
-echo "Input name of file to restore:"
-read original_filename
-
 restore_file() {
     local trash_filename=$1
     local original_dest=$2
@@ -73,9 +65,19 @@ restore_file() {
     echo "Restored $original_filename into $original_dest"
 }
 
+#####
+
+if [[ ! -f "$logfile" ]]; then
+    echo "there's no trash log"
+    exit 1
+fi
+
+echo "Input name of file to restore:"
+read original_filename
+
 while IFS=" " read -r line; do
-    # Format: removed /path/ORIGINAL
-    #         created hard link: /path/HARDLINK
+    # Format: removed /path/<ORIGINAL>
+    #         created hard link: /path/<ORIGINAL>_HARDLINK_<VERSION>
     if [[ "$line" == *"$original_filename"* ]]; then
         original_path=$(echo "$line" | sed -E 's/^removed //')
         IFS=" " read -r nextline

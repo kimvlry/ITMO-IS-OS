@@ -30,7 +30,7 @@ if [ ! -d "$trash" ]; then
 fi
 
 links_count=$(stat -c %h "$file")
-new_link_name="${trash}/${file}_$(( links_count - 1 ))"
+new_link_name="${trash}/${file}_HARDLINK_$(( links_count - 1 ))"
 
 ln "$original" "$new_link_name" && rm "$original" && {
     echo "$(date)"
