@@ -16,7 +16,7 @@ trash="$HOME/.trash"
 log="$HOME/.trash.log"
 
 if [ -z "$1" ]; then
-    echo "error: no file name provided. please specify a file name."
+    echo "error: no file name provided. please specify a name of file in current directory to remove."
     exit 1
 fi
 
@@ -54,7 +54,7 @@ fi
 if rm -- "$original"; then
     echo "removed file: $original"
 else
-    echo "error: failed to remove file '$original'."
+    echo "error: failed to remove file $original."
     exit 1
 fi
 
@@ -64,7 +64,7 @@ fi
 
 {
     echo "$(date)"
-    echo "removed '$original'"
+    echo "removed $original"
     echo "created hard link: $new_link_name"
     echo
 } >> "$log"

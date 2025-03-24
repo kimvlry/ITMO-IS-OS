@@ -62,10 +62,13 @@ if [ -z "$backup_directory" ]; then
     mkdir -p "$backup_directory" || { echo "error: could not create directory $backup_directory"; exit 1; }
     {
         printf "%s : created backup directory %s\nCOPIED:\n" "$today" "$backup_directory"
-        cp -rp "$source_path/"* "$backup_directory/"
-        printf "\n"
     } >> "$backup_report"
-    echo "backup directory created at $backup_directory."
+
+    cp -rp "$source_path/"* "$backup_directory/"
+    find "$backup_directory" -type -f >> "$backup_report"
+    printf "\n" >> "$backup_report"
+
+    echo "backup directory created $backup_directory. backup successfully completed"
     exit 0
 fi
 

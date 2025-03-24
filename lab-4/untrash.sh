@@ -74,22 +74,23 @@ if [[ ! -f "$logfile" ]]; then
 fi
 
 if [ -z "$1" ]; then
-    echo "error: no file name provided. please specify a name of file to restore."
+    echo "error: no file name provided. please specify a name (name only, excluding path) of file to restore."
     exit 1
 fi
 original_filename="$1"
 
 found_files=()
-while IFS=" " read -r line; do
+while read -r line; do
     # format: removed /path/<ORIGINAL>
     #         created hard link: /path/<ORIGINAL>_HARDLINK_<TIMESTAMP>
-    if [[ "$line" == *"$original_filename"* ]]; then
-        original_path=$(echo "$line" | sed -E 's/^removed //')
-        IFS=" " read -r nextline
-        if [[ "$nextline" == *"created hard link:"* ]]; then
-            # `xargs` is then used to clean up any leading/trailing whitespace that may remain after `cut`
-            trash_filename=$(echo "$nextline" | cut -d':' -f2- | xargs)
-            found_files+=("$original_path $trash_filename")
+    if [[ "$line" =~ ^removed\ (.+)$ ]]; then
+        original_path="${BASH_REMATCH[1]}"
+        echo "FOUND ORIG: $original_path"
+        read -r nextline
+        if [[ "$nextline" =~ created\ hard\ link:\ (.+)$ ]]; then
+            trash_filename="${BASH_REMATCH[1]}"
+            echo "FOUND TRASH: $trash_filename"
+            found_files+=("$original_path|$trash_filename")
         fi
     fi
 done < "$logfile"
@@ -100,8 +101,7 @@ if [[ ${#found_files[@]} -eq 0 ]]; then
 fi
 
 for file_info in "${found_files[@]}"; do
-    original_path=$(echo "$file_info" | awk '{print $1}')
-    trash_filename=$(echo "$file_info" | awk '{print $2}')
+    IFS="|" read -r original_filename trash_filename <<< "$file_info" 
 
     echo "Restore $original_filename from $trash_filename? (y/n)"
     read -r option
