@@ -12,7 +12,7 @@
 #    пользователя с выводом соответствующего сообщения. При невозможности создать жесткую
 #    ссылку, например, из-за конфликта имен, пользователю предлагается изменить имя
 #    восстанавливаемого файла.
-
+#
 #!/bin/bash
 
 trash="$HOME/.trash"
@@ -20,6 +20,7 @@ logfile="$HOME/.trash.log"
 
 log() {
     {
+        timestamp=$(date +%s)
         echo $(date)
         echo "removed $1"
         echo -e "created hard link: $2\n"
@@ -32,7 +33,7 @@ restore_file() {
     local original_filename=$3
 
     if [[ ! -f "$trash_filename" ]]; then 
-        echo "File $(basename $trash_filename) couldn't be found in.trash!"
+        echo "file $(basename "$trash_filename") couldn't be found in .trash!"
         return
     fi
 
@@ -40,20 +41,20 @@ restore_file() {
         ln "$trash_filename" "$HOME"
         log "$trash_filename" "$HOME/$original_filename"
         rm "$trash_filename"
-        echo "Folder $original_dest doesn't exist. Restored $original_filename into home directory instead."
+        echo "folder $original_dest doesn't exist. restored $original_filename into home directory instead."
         return
     fi
 
     if [[ -f "$original_dest/$original_filename" ]]; then
         while true; do
-            echo "File named '$original_filename' already exists in $original_dest."
-            echo -n "Input different name: "
+            echo "file named '$original_filename' already exists in $original_dest."
+            echo -n "input different name: "
             read newname
             if [[ ! -f "$original_dest/$newname" ]]; then
                 ln "$trash_filename" "$original_dest/$newname"
                 rm "$trash_filename"
                 log "$trash_filename" "$original_dest/$newname"
-                echo "Restored $original_filename into $original_dest/$newname"
+                echo "restored $original_filename into $original_dest/$newname"
                 return
             fi
         done
@@ -62,36 +63,55 @@ restore_file() {
     ln "$trash_filename" "$original_dest/$original_filename"
     rm "$trash_filename"
     log "$trash_filename" "$original_dest/$original_filename"
-    echo "Restored $original_filename into $original_dest"
+    echo "restored $original_filename into $original_dest"
 }
 
 #####
 
 if [[ ! -f "$logfile" ]]; then
-    echo "there's no trash log"
+    echo "there's no trash log."
     exit 1
 fi
 
-echo "Input name of file to restore:"
-read original_filename
+if [ -z "$1" ]; then
+    echo "error: no file name provided. please specify a name of file to restore."
+    exit 1
+fi
+original_filename="$1"
 
+found_files=()
 while IFS=" " read -r line; do
-    # Format: removed /path/<ORIGINAL>
-    #         created hard link: /path/<ORIGINAL>_HARDLINK_<VERSION>
+    # format: removed /path/<ORIGINAL>
+    #         created hard link: /path/<ORIGINAL>_HARDLINK_<TIMESTAMP>
     if [[ "$line" == *"$original_filename"* ]]; then
         original_path=$(echo "$line" | sed -E 's/^removed //')
         IFS=" " read -r nextline
         if [[ "$nextline" == *"created hard link:"* ]]; then
+            # `xargs` is then used to clean up any leading/trailing whitespace that may remain after `cut`
             trash_filename=$(echo "$nextline" | cut -d':' -f2- | xargs)
-            echo "Restore $original_filename from $trash_filename? (y/n)"
-            read option </dev/tty
-
-            if [[ "$option" == "y" ]]; then
-                original_dest=$(dirname "$original_path")
-                original_filename=$(basename "$original_path")
-
-                restore_file "$trash_filename" "$original_dest" "$original_filename"
-            fi
+            found_files+=("$original_path $trash_filename")
         fi
     fi
 done < "$logfile"
+
+if [[ ${#found_files[@]} -eq 0 ]]; then
+    echo "no entries found for '$original_filename'."
+    exit 0
+fi
+
+for file_info in "${found_files[@]}"; do
+    original_path=$(echo "$file_info" | awk '{print $1}')
+    trash_filename=$(echo "$file_info" | awk '{print $2}')
+
+    echo "Restore $original_filename from $trash_filename? (y/n)"
+    read -r option
+
+    if [[ "$option" == "y" ]]; then
+        original_dest=$(dirname "$original_path")
+        original_filename=$(basename "$original_path")
+
+        restore_file "$trash_filename" "$original_dest" "$original_filename"
+    fi
+done
+
+echo "completed successfully"
