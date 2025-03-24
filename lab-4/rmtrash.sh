@@ -20,6 +20,11 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+if [ -d "$1" ]; then
+    echo "script removes files only! $1 is a directory. try again"
+    exit 0
+fi
+
 file="$1"
 
 if [ ! -e "$file" ]; then

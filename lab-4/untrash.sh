@@ -63,7 +63,7 @@ restore_file() {
     ln "$trash_filename" "$original_dest/$original_filename"
     rm "$trash_filename"
     log "$trash_filename" "$original_dest/$original_filename"
-    echo "restored $original_filename into $original_dest"
+    echo "restored "$original_filename" into "$original_dest""
 }
 
 #####
@@ -85,12 +85,10 @@ while read -r line; do
     #         created hard link: /path/<ORIGINAL>_HARDLINK_<TIMESTAMP>
     if [[ "$line" =~ ^removed\ (.+)$ ]]; then
         original_path="${BASH_REMATCH[1]}"
-        echo "FOUND ORIG: $original_path"
         read -r nextline
         if [[ "$nextline" =~ created\ hard\ link:\ (.+)$ ]]; then
             trash_filename="${BASH_REMATCH[1]}"
-            echo "FOUND TRASH: $trash_filename"
-            found_files+=("$original_path|$trash_filename")
+            found_files+=("$original_path\t$trash_filename")
         fi
     fi
 done < "$logfile"
@@ -101,9 +99,9 @@ if [[ ${#found_files[@]} -eq 0 ]]; then
 fi
 
 for file_info in "${found_files[@]}"; do
-    IFS="|" read -r original_filename trash_filename <<< "$file_info" 
+    IFS="\t" read -r original_filename trash_filename <<< "$file_info" 
 
-    echo "Restore $original_filename from $trash_filename? (y/n)"
+    echo "Restore "$original_filename" from "$trash_filename"? (y/n)"
     read -r option
 
     if [[ "$option" == "y" ]]; then
