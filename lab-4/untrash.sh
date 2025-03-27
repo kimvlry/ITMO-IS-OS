@@ -18,98 +18,79 @@
 trash="$HOME/.trash"
 logfile="$HOME/.trash.log"
 
-log() {
-    {
-        timestamp=$(date +%s)
-        echo $(date)
-        echo "removed $1"
-        echo -e "created hard link: $2\n"
-    } >> "$logfile"
-}
-
 restore_file() {
-    local trash_filename=$1
-    local original_dest=$2
-    local original_filename=$3
+    local trash_path="$1"
+    local original_path="$2"
 
-    if [[ ! -f "$trash_filename" ]]; then 
-        echo "file $(basename "$trash_filename") couldn't be found in .trash!"
-        return
+    if [[ ! -f "$trash_path" ]]; then
+        echo "file '$trash_path' not found in .trash!"
+        return 1
     fi
 
-    if [[ ! -d "$original_dest" ]]; then
-        ln "$trash_filename" "$HOME"
-        log "$trash_filename" "$HOME/$original_filename"
-        rm "$trash_filename"
-        echo "folder $original_dest doesn't exist. restored $original_filename into home directory instead."
-        return
+    local original_dir=$(dirname "$original_path")
+    local original_name=$(basename "$original_path")
+
+    if [[ ! -d "$original_dir" ]]; then
+        echo "original directory '$original_dir' not found."
+        read -p "restore to home directory? [y/n] " answer
+        [[ "$answer" =~ ^[Nn] ]] && return 1
+        original_dir="$HOME"
     fi
 
-    if [[ -f "$original_dest/$original_filename" ]]; then
-        while true; do
-            echo "file named '$original_filename' already exists in $original_dest."
-            echo -n "input different name: "
-            read newname
-            if [[ ! -f "$original_dest/$newname" ]]; then
-                ln "$trash_filename" "$original_dest/$newname"
-                rm "$trash_filename"
-                log "$trash_filename" "$original_dest/$newname"
-                echo "restored $original_filename into $original_dest/$newname"
-                return
-            fi
-        done
+    local target_path="$original_dir/$original_name"
+    if [[ -e "$target_path" ]]; then
+        echo "name conflict: '$target_path' already exists"
+        read -p "enter new name (or leave empty to skip): " new_name
+        [[ -z "$new_name" ]] && return 1
+        target_path="$original_dir/$new_name"
     fi
 
-    ln "$trash_filename" "$original_dest/$original_filename"
-    rm "$trash_filename"
-    log "$trash_filename" "$original_dest/$original_filename"
-    echo "restored "$original_filename" into "$original_dest""
+    if ln -- "$trash_path" "$target_path" 2>/dev/null; then
+        rm -- "$trash_path"
+        echo "successfully restored to: $target_path"
+    else
+        echo "failed to restore file"
+    fi
 }
 
-#####
+###
 
 if [[ ! -f "$logfile" ]]; then
-    echo "there's no trash log."
+    echo "error: $logfile not found"
     exit 1
 fi
 
-if [ -z "$1" ]; then
-    echo "error: no file name provided. please specify a name (name only, excluding path) of file to restore."
+if [[ -z "$1" ]]; then
+    echo "usage: $0 <filename>"
     exit 1
 fi
-original_filename="$1"
+search_pattern="$1"
 
-found_files=()
-while read -r line; do
-    # format: removed /path/<ORIGINAL>
-    #         created hard link: /path/<ORIGINAL>_HARDLINK_<TIMESTAMP>
-    if [[ "$line" =~ ^removed\ (.+)$ ]]; then
-        original_path="${BASH_REMATCH[1]}"
-        read -r nextline
-        if [[ "$nextline" =~ created\ hard\ link:\ (.+)$ ]]; then
-            trash_filename="${BASH_REMATCH[1]}"
-            found_files+=("$original_path\t$trash_filename")
+exec 3<"$logfile"
+while true; do
+    IFS= read -u3 -r date_line || break
+    IFS= read -u3 -r removed_line || break
+    IFS= read -u3 -r created_line || break
+    IFS= read -u3 -r empty_line || break
+
+    [[ "$removed_line" =~ ^removed[[:space:]]+(.+)$ ]] || continue
+    original_path="${BASH_REMATCH[1]}"
+    
+    [[ "$created_line" =~ ^created[[:space:]]+hard[[:space:]]+link:[[:space:]]+(.+)$ ]] || continue
+    trash_path="${BASH_REMATCH[1]}"
+
+    original_name=$(basename "$original_path")
+    if [[ "$original_name" == *"$search_pattern"* ]]; then
+        echo -e "\nfound candidate:"
+        echo "original name:  $original_name"
+        echo "original path:  $original_path"
+        echo "trash path:     $trash_path"
+        echo "deleted at:     $date_line"
+        
+        read -p "restore this file? [y/n] " answer
+        if [[ "$answer" =~ ^[Yy] ]]; then
+            restore_file "$trash_path" "$original_path"
         fi
     fi
-done < "$logfile"
-
-if [[ ${#found_files[@]} -eq 0 ]]; then
-    echo "no entries found for '$original_filename'."
-    exit 0
-fi
-
-for file_info in "${found_files[@]}"; do
-    IFS="\t" read -r original_filename trash_filename <<< "$file_info" 
-
-    echo "Restore "$original_filename" from "$trash_filename"? (y/n)"
-    read -r option
-
-    if [[ "$option" == "y" ]]; then
-        original_dest=$(dirname "$original_path")
-        original_filename=$(basename "$original_path")
-
-        restore_file "$trash_filename" "$original_dest" "$original_filename"
-    fi
 done
-
-echo "completed successfully"
+exec 3<&-
