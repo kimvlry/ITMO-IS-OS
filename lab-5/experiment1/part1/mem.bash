@@ -51,7 +51,7 @@ declare -a arr
 ) & 
 top_pid=$!
 
-trap "kill $top_pid" EXIT SIGINT SIGTERM 
+trap 'kill $top_pid' EXIT
 
 while true;  do
     arr+=(1 2 3 4 5 6 7 8 9 10)
