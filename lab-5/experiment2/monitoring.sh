@@ -9,6 +9,7 @@ if [ -z "$N" ] || [ -z "$K" ] || [ -z "$report" ]; then
     exit 
 fi
 
+dmesg -C
 for ((i=1; i<=$K; ++i)); do
     ./newmem.bash $N & 
     pid=$!
