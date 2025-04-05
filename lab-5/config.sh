@@ -10,10 +10,16 @@
 config="config.txt"
 > "$config"
 
-free -h | grep "Mem" >> "$config" 
-free -h | grep "Swap" >> "$config" 
-getconf PAGE_SIZE >>  "$config" 
-grep MemAviable /proc/meminfo >>  "$config" 
-grep SwapFree /proc/meminfo >>  "$config" 
+total_mem=$(free -h | awk '/^Mem/ {print $2}')
+total_swap=$(free -h | awk '/^Swap/ {print $2}')
+page_size=$(getconf PAGE_SIZE)
+free_mem=$(free -h | awk '/^Mem/ {print $4}')
+free_swap=$(free -h | awk '/^Swap/ {print $4}')
+
+echo "total_mem : $total_mem" > $config
+echo "total_swap : $total_swap" >> $config
+echo "page_size : $page_size" >> $config
+echo "free_mem : $free_mem" >> $config
+echo "free_swap : $free_swap" >> $config
 
 echo "configuration info written to $config"
