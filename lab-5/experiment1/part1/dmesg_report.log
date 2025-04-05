@@ -1,2 +1,0 @@
-[ 1815.502177] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/run-p3906-i4206.scope,task=bash,pid=4025,uid=1000
-[ 1815.502219] Out of memory: Killed process 4025 (bash) total-vm:6032912kB, anon-rss:3232044kB, file-rss:0kB, shmem-rss:0kB, UID:1000 pgtables:11404kB oom_score_adj:200
