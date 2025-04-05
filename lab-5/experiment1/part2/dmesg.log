@@ -1,1 +1,2 @@
-..
+[  242.602972] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/run-p3016-i3316.scope,task=bash,pid=3337,uid=1000
+[  242.603018] Out of memory: Killed process 3337 (bash) total-vm:3122444kB, anon-rss:1601748kB, file-rss:916kB, shmem-rss:0kB, UID:1000 pgtables:5708kB oom_score_adj:200
