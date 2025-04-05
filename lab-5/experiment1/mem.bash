@@ -29,3 +29,36 @@
 #    исчезновения из перечня процессов в top.
 # 6. Посмотрите с помощью команды `dmesg | grep "mem.bash"` последние две записи о скрипте в системном 
 #    журнале и зафиксируйте их в отчете. Также зафиксируйте значение в последней строке файла report.log.
+#
+#
+#
+# !/bin/bash
+
+report="report.log"
+top_log="top.log"
+
+> $report
+> $top_log
+
+counter=0
+declare -a arr 
+
+(
+    while true; do
+        echo "$(date)" >> $top_log
+        top -b -n 1 | head -n 15 >> $top_log
+        echo -e "\n" >> $top_log
+        sleep 1
+    done
+) & 
+top_pid=$!
+
+trap "kill $top_pid" EXIT
+
+while true;  do
+    arr+=(1 2 3 4 5 6 7 8 9 10)
+    counter=$((counter + 1))
+    if ((counter % 10000 == 0)); then 
+        echo "step: $counter, arr size: ${#arr[@]}" >> $report
+    fi
+done 
