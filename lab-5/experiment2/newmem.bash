@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 
 N=$1
 if [ -z "$1" ]; then
