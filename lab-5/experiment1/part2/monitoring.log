@@ -1,670 +1,252 @@
-top - 16:46:29 up 3 min,  2 users,  load average: 0.66, 0.66, 0.28
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 48.9 us,  6.7 sy,  0.0 ni, 42.2 id,  0.0 wa,  0.0 hi,  2.2 si,  0.0 st 
-MiB Mem :   3451.4 total,   1781.7 free,   1141.8 used,    697.6 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2309.6 avail Mem 
+top - 14:17:25 up 1 min,  2 users,  load average: 0.73, 0.28, 0.10
+Tasks: 220 total,   3 running, 217 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 46.5 us,  4.7 sy,  0.0 ni, 46.5 id,  0.0 wa,  0.0 hi,  2.3 si,  0.0 st 
+MiB Mem :   3451.4 total,   1891.1 free,   1096.8 used,    631.6 buff/cache     
+MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2354.6 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  241808  15616   1836 R  90.9   0.4   0:00.20 bash
-   3337 valerie   20   0  241280  15104   1836 R  90.9   0.4   0:00.19 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3203 valerie   20   0  241808  15572   1836 R 100.0   0.4   0:00.20 bash
+   3205 valerie   20   0  241412  15188   1836 R 100.0   0.4   0:00.18 bash
+      1 root      20   0   47524  38324   9592 S   0.0   1.1   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:30 up 3 min,  2 users,  load average: 0.66, 0.66, 0.28
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.2 us,  2.3 sy,  0.0 ni, 46.5 id,  0.0 wa,  0.0 hi,  7.0 si,  0.0 st 
-MiB Mem :   3451.4 total,   1700.5 free,   1223.0 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2228.4 avail Mem 
+top - 14:17:30 up 1 min,  2 users,  load average: 0.83, 0.31, 0.11
+Tasks: 220 total,   3 running, 217 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 58.1 us,  4.7 sy,  0.0 ni, 30.2 id,  0.0 wa,  0.0 hi,  7.0 si,  0.0 st 
+MiB Mem :   3451.4 total,   1376.4 free,   1611.3 used,    631.8 buff/cache     
+MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1840.1 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  312956  86656   1836 R 100.0   2.5   0:01.42 bash
-   3337 valerie   20   0  312824  86656   1836 R 100.0   2.5   0:01.41 bash
-   2714 valerie    9 -11  390864  11636   6908 S   9.1   0.3   0:00.80 pipewire
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:46:31 up 3 min,  2 users,  load average: 0.85, 0.70, 0.30
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 45.5 us,  6.8 sy,  0.0 ni, 45.5 id,  0.0 wa,  0.0 hi,  2.3 si,  0.0 st 
-MiB Mem :   3451.4 total,   1590.9 free,   1332.5 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2118.8 avail Mem 
+   3203 valerie   20   0  503036 276820   1836 R 100.0   7.8   0:05.40 bash
+   3205 valerie   20   0  498020 271828   1836 R 100.0   7.7   0:05.40 bash
+   2255 valerie   20   0 4890432 305992 114804 S  50.0   8.7   0:06.15 gnome-s+
+   2974 valerie   20   0 2553944 224524  87608 S  40.0   6.4   0:03.30 ptyxis
+      1 root      20   0   47524  38324   9592 S   0.0   1.1   0:01.57 systemd
+top - 14:17:35 up 1 min,  2 users,  load average: 0.92, 0.34, 0.12
+Tasks: 220 total,   3 running, 217 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 43.5 us,  0.0 sy,  0.0 ni, 43.5 id,  0.0 wa,  0.0 hi, 13.0 si,  0.0 st 
+MiB Mem :   3451.4 total,    865.9 free,   2121.9 used,    631.8 buff/cache     
+MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1329.5 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  368528 142208   1836 R 100.0   4.0   0:02.63 bash
-   3337 valerie   20   0  368660 142464   1836 R 100.0   4.0   0:02.62 bash
-   2714 valerie    9 -11  390864  11636   6908 S  20.0   0.3   0:00.91 pipewire
-   3343 valerie   20   0  231812   4548   2628 R  10.0   0.1   0:00.01 top
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-
-
-top - 16:46:32 up 3 min,  2 users,  load average: 0.85, 0.70, 0.30
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 45.5 us,  0.0 sy,  0.0 ni, 47.7 id,  0.0 wa,  0.0 hi,  6.8 si,  0.0 st 
-MiB Mem :   3451.4 total,   1485.5 free,   1437.9 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   2013.5 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  422252 195968   1836 R 100.0   5.5   0:03.85 bash
-   3337 valerie   20   0  422516 196224   1836 R 100.0   5.6   0:03.84 bash
-   2714 valerie    9 -11  390864  11636   6908 S  10.0   0.3   0:01.00 pipewire
-   3346 valerie   20   0  231812   4548   2628 R  10.0   0.1   0:00.01 top
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-
-
-top - 16:46:34 up 3 min,  2 users,  load average: 0.85, 0.70, 0.30
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 48.9 us,  2.2 sy,  0.0 ni, 44.4 id,  0.0 wa,  0.0 hi,  4.4 si,  0.0 st 
-MiB Mem :   3451.4 total,   1377.9 free,   1545.6 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1905.8 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  477956 251776   1836 R 100.0   7.1   0:05.06 bash
-   3337 valerie   20   0  478220 252032   1836 R 100.0   7.1   0:05.05 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3203 valerie   20   0  766244 539988   1836 R 100.0  15.3   0:10.61 bash
+   3205 valerie   20   0  756608 530388   1836 R 100.0  15.0   0:10.61 bash
+      1 root      20   0   47524  38324   9592 S   0.0   1.1   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:35 up 3 min,  2 users,  load average: 0.85, 0.70, 0.30
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.4 us,  0.0 sy,  0.0 ni, 44.4 id,  0.0 wa,  0.0 hi, 11.1 si,  0.0 st 
-MiB Mem :   3451.4 total,   1261.7 free,   1661.7 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1789.7 avail Mem 
+top - 14:17:41 up 1 min,  2 users,  load average: 1.01, 0.37, 0.13
+Tasks: 221 total,   3 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 42.2 us,  2.2 sy,  0.0 ni, 44.4 id,  0.0 wa,  0.0 hi, 11.1 si,  0.0 st 
+MiB Mem :   3451.4 total,    287.5 free,   2700.2 used,    631.9 buff/cache     
+MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.    751.2 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  538280 312064   1836 R 100.0   8.8   0:06.28 bash
-   3337 valerie   20   0  538412 312064   1836 R 100.0   8.8   0:06.27 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3203 valerie   20   0 1060340 834132   1836 R 100.0  23.6   0:15.81 bash
+   3205 valerie   20   0 1047272 821076   1836 R 100.0  23.2   0:15.82 bash
+      1 root      20   0   47524  38324   9592 S   0.0   1.1   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:36 up 3 min,  2 users,  load average: 0.94, 0.72, 0.31
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 38.8 us,  8.2 sy,  0.0 ni, 40.8 id,  0.0 wa,  0.0 hi, 12.2 si,  0.0 st 
-MiB Mem :   3451.4 total,   1152.6 free,   1770.9 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1680.5 avail Mem 
+top - 14:17:46 up 1 min,  2 users,  load average: 1.17, 0.41, 0.15
+Tasks: 221 total,   3 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 52.9 us,  5.9 sy,  0.0 ni, 27.5 id,  2.0 wa,  0.0 hi, 11.8 si,  0.0 st 
+MiB Mem :   3451.4 total,    133.1 free,   3155.8 used,    316.6 buff/cache     
+MiB Swap:   3072.0 total,   3061.7 free,     10.3 used.    295.6 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  594908 368640   1836 R  90.9  10.4   0:07.49 bash
-   3337 valerie   20   0  594908 368640   1836 R  90.9  10.4   0:07.48 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3203 valerie   20   0 1341236   1.1g   1836 R  90.9  31.5   0:21.02 bash
+   3205 valerie   20   0 1323020   1.0g   1836 R  90.9  31.0   0:21.02 bash
+   2255 valerie   20   0 4890392 287336  94228 S  18.2   8.1   0:06.61 gnome-s+
+   2974 valerie   20   0 2559984 218088  74888 S   9.1   6.2   0:04.05 ptyxis
+   3236 valerie   20   0  231812   4548   2628 R   9.1   0.1   0:00.01 top
+top - 14:17:51 up 1 min,  2 users,  load average: 1.24, 0.44, 0.16
+Tasks: 221 total,   4 running, 217 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 51.2 us,  0.0 sy,  0.0 ni, 46.5 id,  2.3 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3451.4 total,     67.1 free,   3416.4 used,     89.1 buff/cache     
+MiB Swap:   3072.0 total,   2833.9 free,    238.1 used.     35.0 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   3203 valerie   20   0 1596656   1.3g   1836 R 100.0  37.3   0:26.29 bash
+   3205 valerie   20   0 1577384   1.2g   1836 R 100.0  36.8   0:26.29 bash
+     58 root      20   0       0      0      0 R  10.0   0.0   0:00.57 kswapd0
+      1 root      20   0   47524  36276   7672 S   0.0   1.0   0:01.57 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
+top - 14:17:56 up 2 min,  2 users,  load average: 1.38, 0.48, 0.17
+Tasks: 221 total,   3 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 48.9 us,  6.7 sy,  0.0 ni, 42.2 id,  2.2 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3451.4 total,     73.1 free,   3413.5 used,     83.0 buff/cache     
+MiB Swap:   3072.0 total,   2363.6 free,    708.4 used.     37.9 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   3203 valerie   20   0 1840856   1.3g   1836 R  90.9  39.7   0:31.52 bash
+   3205 valerie   20   0 1820924   1.3g   1836 R  90.9  39.2   0:31.51 bash
+     58 root      20   0       0      0      0 S  18.2   0.0   0:01.04 kswapd0
+   3250 valerie   20   0  231812   4540   2620 R   9.1   0.1   0:00.01 top
+      1 root      20   0   47524  25908   5496 S   0.0   0.7   0:01.57 systemd
+top - 14:18:02 up 2 min,  2 users,  load average: 1.43, 0.50, 0.18
+Tasks: 221 total,   3 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 67.5 us,  5.0 sy,  0.0 ni, 25.0 id,  2.5 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3451.4 total,     59.1 free,   3393.5 used,    151.2 buff/cache     
+MiB Swap:   3072.0 total,   1885.7 free,   1186.3 used.     57.9 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   3203 valerie   20   0 2050208   1.3g   1836 R 100.0  39.9   0:36.73 bash
+   3205 valerie   20   0 2028956   1.3g   1836 R 100.0  39.6   0:36.68 bash
+     58 root      20   0       0      0      0 S  27.3   0.0   0:01.63 kswapd0
+      1 root      20   0   47524  21300   5496 S   0.0   0.6   0:01.57 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
+top - 14:18:07 up 2 min,  2 users,  load average: 1.63, 0.56, 0.20
+Tasks: 221 total,   3 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 43.5 us, 21.7 sy,  0.0 ni, 28.3 id,  0.0 wa,  0.0 hi,  6.5 si,  0.0 st 
+MiB Mem :   3451.4 total,    119.7 free,   3332.9 used,    151.0 buff/cache     
+MiB Swap:   3072.0 total,   1391.2 free,   1680.8 used.    118.4 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   3203 valerie   20   0 2268536   1.4g   1836 R 100.0  40.5   0:41.94 bash
+   3205 valerie   20   0 2250584   1.4g   1836 R 100.0  40.3   0:41.89 bash
+   2974 valerie   20   0 2553960 146512  60012 S  60.0   4.1   0:06.32 ptyxis
+   3262 valerie   20   0  231812   4540   2620 R  10.0   0.1   0:00.01 top
+      1 root      20   0   47524   9140   5496 S   0.0   0.3   0:01.57 systemd
+top - 14:18:12 up 2 min,  2 users,  load average: 1.74, 0.60, 0.22
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 22.7 us,  0.0 sy,  0.0 ni, 70.5 id,  0.0 wa,  0.0 hi,  6.8 si,  0.0 st 
+MiB Mem :   3451.4 total,   1313.2 free,   2139.1 used,    151.6 buff/cache     
+MiB Swap:   3072.0 total,   1931.7 free,   1140.3 used.   1312.3 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   3205 valerie   20   0 2499404   1.6g   1836 R 100.0  46.0   0:47.11 bash
+      1 root      20   0   47524   8756   5496 S   0.0   0.2   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:37 up 3 min,  2 users,  load average: 0.94, 0.72, 0.31
-Tasks: 217 total,   3 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 53.5 us,  0.0 sy,  0.0 ni, 46.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,   1066.1 free,   1857.4 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1594.0 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  643748 417536   1836 R  90.9  11.8   0:08.71 bash
-   3337 valerie   20   0  643352 417152   1836 R  90.9  11.8   0:08.69 bash
-   2250 valerie   20   0 4820708 308648 114916 S   9.1   8.7   0:08.89 gnome-s+
-   2956 valerie   20   0 2453092 196176  87596 S   9.1   5.6   0:09.35 ptyxis
-   3358 valerie   20   0  231812   4548   2628 R   9.1   0.1   0:00.01 top
-
-
-top - 16:46:38 up 3 min,  2 users,  load average: 0.94, 0.72, 0.31
-Tasks: 218 total,   3 running, 215 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 43.9 us,  4.9 sy,  0.0 ni, 51.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,    976.9 free,   1946.5 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1504.9 avail Mem 
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+top - 14:18:17 up 2 min,  2 users,  load average: 1.68, 0.61, 0.22
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 22.2 us,  0.0 sy,  0.0 ni, 68.9 id,  0.0 wa,  0.0 hi,  8.9 si,  0.0 st 
+MiB Mem :   3451.4 total,   1019.0 free,   2433.1 used,    152.0 buff/cache     
+MiB Swap:   3072.0 total,   1933.7 free,   1138.3 used.   1018.3 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  692456 466176   1836 R 100.0  13.2   0:09.91 bash
-   3337 valerie   20   0  692060 465792   1836 R 100.0  13.2   0:09.90 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3205 valerie   20   0 2795348   1.8g   1836 R 100.0  54.4   0:52.32 bash
+      1 root      20   0   47524   8756   5496 S   0.0   0.2   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:40 up 3 min,  2 users,  load average: 0.94, 0.72, 0.31
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 41.3 us,  2.2 sy,  0.0 ni, 43.5 id,  0.0 wa,  0.0 hi, 13.0 si,  0.0 st 
-MiB Mem :   3451.4 total,    865.6 free,   2057.8 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1393.6 avail Mem 
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+top - 14:18:22 up 2 min,  2 users,  load average: 1.63, 0.62, 0.23
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 20.0 us,  4.0 sy,  0.0 ni, 60.0 id,  2.0 wa,  0.0 hi, 14.0 si,  0.0 st 
+MiB Mem :   3451.4 total,    719.6 free,   2732.6 used,    152.1 buff/cache     
+MiB Swap:   3072.0 total,   1933.7 free,   1138.3 used.    718.8 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  750008 523776   1836 R 100.0  14.8   0:11.12 bash
-   3337 valerie   20   0  750404 524032   1836 R 100.0  14.8   0:11.11 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3205 valerie   20   0 3098816   2.1g   1836 R  90.9  63.0   0:57.52 bash
+      1 root      20   0   47524   8756   5496 S   0.0   0.2   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:41 up 3 min,  2 users,  load average: 1.11, 0.76, 0.32
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 48.9 us,  0.0 sy,  0.0 ni, 42.6 id,  0.0 wa,  0.0 hi,  8.5 si,  0.0 st 
-MiB Mem :   3451.4 total,    747.8 free,   2175.6 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1275.8 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  807032 580736   1836 R  90.9  16.4   0:12.33 bash
-   3337 valerie   20   0  808616 582272   1836 R  90.9  16.5   0:12.31 bash
-   3396 valerie   20   0  231812   4548   2628 R   9.1   0.1   0:00.01 top
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:46:42 up 3 min,  2 users,  load average: 1.11, 0.76, 0.32
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 46.2 us,  7.7 sy,  0.0 ni, 46.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,    627.1 free,   2296.3 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1155.1 avail Mem 
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+top - 14:18:28 up 2 min,  2 users,  load average: 1.58, 0.62, 0.23
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 20.5 us,  2.3 sy,  0.0 ni, 68.2 id,  0.0 wa,  0.0 hi,  9.1 si,  0.0 st 
+MiB Mem :   3451.4 total,    414.0 free,   3038.0 used,    152.2 buff/cache     
+MiB Swap:   3072.0 total,   1933.7 free,   1138.3 used.    413.4 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  870656 644224   1836 R 100.0  18.2   0:13.54 bash
-   3337 valerie   20   0  872504 646016   1836 R 100.0  18.3   0:13.52 bash
-   2250 valerie   20   0 4824868 308648 114916 S  40.0   8.7   0:09.24 gnome-s+
-   2956 valerie   20   0 2453116 196176  87596 S  20.0   5.6   0:09.69 ptyxis
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-
-
-top - 16:46:43 up 3 min,  2 users,  load average: 1.11, 0.76, 0.32
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 41.3 us,  2.2 sy,  0.0 ni, 45.7 id,  0.0 wa,  0.0 hi, 10.9 si,  0.0 st 
-MiB Mem :   3451.4 total,    511.8 free,   2411.6 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.   1039.8 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  927680 701312   1836 R 100.0  19.8   0:14.76 bash
-   3337 valerie   20   0  929924 703488   1836 R 100.0  19.9   0:14.74 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3205 valerie   20   0 3412580   2.4g   1836 R 100.0  71.8   1:02.73 bash
+      1 root      20   0   47524   8756   5496 S   0.0   0.2   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:45 up 3 min,  2 users,  load average: 1.11, 0.76, 0.32
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 41.5 us,  1.9 sy,  0.0 ni, 37.7 id,  0.0 wa,  0.0 hi, 18.9 si,  0.0 st 
-MiB Mem :   3451.4 total,    376.3 free,   2547.1 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.    904.3 avail Mem 
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+top - 14:18:33 up 2 min,  2 users,  load average: 1.53, 0.63, 0.24
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 24.4 us,  0.0 sy,  0.0 ni, 64.4 id,  0.0 wa,  0.0 hi, 11.1 si,  0.0 st 
+MiB Mem :   3451.4 total,    120.0 free,   3331.6 used,    153.0 buff/cache     
+MiB Swap:   3072.0 total,   1934.0 free,   1138.0 used.    119.8 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0  997112 770816   1836 R  90.9  21.8   0:15.97 bash
-   3337 valerie   20   0 1000148 773760   1836 R  90.9  21.9   0:15.95 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3205 valerie   20   0 3722516   2.7g   1836 R 100.0  80.6   1:07.94 bash
+   2255 valerie   20   0 4890392 137192  34452 S  30.0   3.9   0:09.47 gnome-s+
+   2974 valerie   20   0 2550416 137296  59656 S  10.0   3.9   0:07.85 ptyxis
+      1 root      20   0   47524   8756   5496 S   0.0   0.2   0:01.57 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
+top - 14:18:38 up 2 min,  2 users,  load average: 1.45, 0.64, 0.25
+Tasks: 220 total,   3 running, 217 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 25.0 us,  0.0 sy,  0.0 ni, 75.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3451.4 total,     63.1 free,   3389.5 used,    151.0 buff/cache     
+MiB Swap:   3072.0 total,   1734.4 free,   1337.6 used.     61.9 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   3205 valerie   20   0 3993776   2.8g   1836 R 100.0  82.7   1:13.16 bash
+     58 root      20   0       0      0      0 R  10.0   0.0   0:02.57 kswapd0
+      1 root      20   0   47524   7092   3832 S   0.0   0.2   0:01.57 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:46 up 3 min,  2 users,  load average: 1.26, 0.80, 0.33
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 41.5 us,  7.3 sy,  0.0 ni, 51.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,    244.1 free,   2679.3 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.    772.0 avail Mem 
+top - 14:18:43 up 2 min,  2 users,  load average: 1.57, 0.68, 0.26
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 20.4 us,  0.0 sy,  0.0 ni, 63.3 id,  0.0 wa,  0.0 hi, 16.3 si,  0.0 st 
+MiB Mem :   3451.4 total,     59.0 free,   3401.2 used,    136.2 buff/cache     
+MiB Swap:   3072.0 total,   1449.5 free,   1622.5 used.     50.2 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1063508 837248   1836 R 100.0  23.7   0:17.19 bash
-   3337 valerie   20   0 1067732 841344   1836 R 100.0  23.8   0:17.17 bash
-   3410 valerie   20   0  231812   4548   2628 R  10.0   0.1   0:00.01 top
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:46:47 up 3 min,  2 users,  load average: 1.26, 0.80, 0.33
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 48.9 us,  0.0 sy,  0.0 ni, 42.6 id,  0.0 wa,  0.0 hi,  8.5 si,  0.0 st 
-MiB Mem :   3451.4 total,    119.7 free,   2803.7 used,    697.8 buff/cache     
-MiB Swap:   3072.0 total,   3072.0 free,      0.0 used.    647.7 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1127264 900992   1836 R 100.0  25.5   0:18.40 bash
-   3337 valerie   20   0 1132676 906112   1836 R 100.0  25.6   0:18.38 bash
-   3415 valerie   20   0  231812   4548   2628 R  10.0   0.1   0:00.01 top
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:46:48 up 3 min,  2 users,  load average: 1.26, 0.80, 0.33
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.0 us,  2.0 sy,  0.0 ni, 40.0 id,  0.0 wa,  0.0 hi, 14.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     64.8 free,   2920.0 used,    630.1 buff/cache     
-MiB Swap:   3072.0 total,   3065.7 free,      6.3 used.    531.3 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1196036 969728   1836 R  90.9  27.4   0:19.62 bash
-   3337 valerie   20   0 1202240 975744   1836 R  90.9  27.6   0:19.60 bash
-     58 root      20   0       0      0      0 S   9.1   0.0   0:00.02 kswapd0
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:46:49 up 3 min,  2 users,  load average: 1.26, 0.80, 0.33
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 42.9 us,  4.1 sy,  0.0 ni, 40.8 id,  0.0 wa,  0.0 hi, 12.2 si,  0.0 st 
-MiB Mem :   3451.4 total,     63.0 free,   3029.9 used,    520.5 buff/cache     
-MiB Swap:   3072.0 total,   3064.2 free,      7.8 used.    421.5 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1249364 999.1m   1836 R 100.0  28.9   0:20.83 bash
-   3337 valerie   20   0 1257284   1.0g   1836 R 100.0  29.2   0:20.81 bash
-     58 root      20   0       0      0      0 S  20.0   0.0   0:00.06 kswapd0
-   3423 valerie   20   0  231812   4548   2628 R  10.0   0.1   0:00.01 top
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
-
-
-top - 16:46:51 up 3 min,  2 users,  load average: 1.40, 0.83, 0.35
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 41.3 us,  2.2 sy,  0.0 ni, 45.7 id,  0.0 wa,  0.0 hi, 10.9 si,  0.0 st 
-MiB Mem :   3451.4 total,     67.9 free,   3139.0 used,    406.0 buff/cache     
-MiB Swap:   3072.0 total,   3063.7 free,      8.3 used.    312.3 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1311668   1.0g   1836 R 100.0  30.7   0:22.05 bash
-   3337 valerie   20   0 1320380   1.0g   1836 R 100.0  31.0   0:22.02 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3205 valerie   20   0 4313348   2.8g   1836 R 100.0  83.9   1:18.37 bash
+     58 root      20   0       0      0      0 S  20.0   0.0   0:02.92 kswapd0
+      1 root      20   0   47524   6508   4016 S   0.0   0.2   0:01.58 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:52 up 3 min,  2 users,  load average: 1.40, 0.83, 0.35
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 45.7 us,  6.5 sy,  0.0 ni, 41.3 id,  0.0 wa,  0.0 hi,  6.5 si,  0.0 st 
-MiB Mem :   3451.4 total,     70.9 free,   3243.6 used,    295.2 buff/cache     
-MiB Swap:   3072.0 total,   3059.2 free,     12.8 used.    207.8 avail Mem 
+top - 14:18:48 up 2 min,  2 users,  load average: 1.53, 0.69, 0.27
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 23.3 us,  7.0 sy,  0.0 ni, 69.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3451.4 total,     65.4 free,   3424.3 used,     77.1 buff/cache     
+MiB Swap:   3072.0 total,   1213.6 free,   1858.4 used.     27.1 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1367504   1.1g   1836 R 100.0  32.3   0:23.27 bash
-   3337 valerie   20   0 1377140   1.1g   1836 R 100.0  32.6   0:23.24 bash
-      1 root      20   0   47524  38384   9688 S   0.0   1.1   0:01.53 systemd
+   3205 valerie   20   0 4635692   2.9g   1580 R  90.9  87.0   1:23.59 bash
+     58 root      20   0       0      0      0 S  18.2   0.0   0:03.38 kswapd0
+      1 root      20   0   47524   4588   3632 S   0.0   0.1   0:01.58 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:53 up 3 min,  2 users,  load average: 1.40, 0.83, 0.35
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 42.3 us,  1.9 sy,  0.0 ni, 40.4 id,  0.0 wa,  0.0 hi, 15.4 si,  0.0 st 
-MiB Mem :   3451.4 total,     73.7 free,   3337.7 used,    195.3 buff/cache     
-MiB Swap:   3072.0 total,   3048.4 free,     23.6 used.    113.6 avail Mem 
+top - 14:18:54 up 3 min,  2 users,  load average: 1.48, 0.69, 0.27
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 25.6 us,  4.7 sy,  0.0 ni, 67.4 id,  2.3 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3451.4 total,     71.2 free,   3423.2 used,     67.8 buff/cache     
+MiB Swap:   3072.0 total,    912.4 free,   2159.6 used.     28.2 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1422812   1.1g   1836 R 100.0  33.9   0:24.50 bash
-   3337 valerie   20   0 1434164   1.2g   1836 R 100.0  34.2   0:24.47 bash
-      1 root      20   0   47524  38128   9688 S   0.0   1.1   0:01.53 systemd
+   3205 valerie   20   0 4955000   3.0g   1580 R 100.0  87.7   1:28.81 bash
+     58 root      20   0       0      0      0 S  20.0   0.0   0:03.75 kswapd0
+      1 root      20   0   47524   4588   3632 S   0.0   0.1   0:01.58 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:46:54 up 3 min,  2 users,  load average: 1.40, 0.83, 0.35
-Tasks: 219 total,   4 running, 215 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 38.8 us,  2.0 sy,  0.0 ni, 42.9 id,  0.0 wa,  0.0 hi, 16.3 si,  0.0 st 
-MiB Mem :   3451.4 total,     68.1 free,   3400.0 used,    120.4 buff/cache     
-MiB Swap:   3072.0 total,   3027.2 free,     44.8 used.     51.4 avail Mem 
+top - 14:18:59 up 3 min,  2 users,  load average: 1.45, 0.70, 0.27
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 19.6 us,  4.3 sy,  0.0 ni, 56.5 id,  6.5 wa,  0.0 hi, 13.0 si,  0.0 st 
+MiB Mem :   3451.4 total,     75.1 free,   3419.2 used,     67.9 buff/cache     
+MiB Swap:   3072.0 total,    599.1 free,   2472.9 used.     32.2 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1474160   1.2g   1836 R 100.0  35.3   0:25.72 bash
-   3337 valerie   20   0 1487360   1.2g   1836 R 100.0  35.7   0:25.69 bash
-     58 root      20   0       0      0      0 R  20.0   0.0   0:00.39 kswapd0
-   3437 valerie   20   0  231812   4436   2516 R  10.0   0.1   0:00.01 top
-      1 root      20   0   47524  38128   9688 S   0.0   1.1   0:01.53 systemd
-
-
-top - 16:46:56 up 3 min,  2 users,  load average: 1.69, 0.90, 0.37
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 46.5 us, 11.6 sy,  0.0 ni, 39.5 id,  0.0 wa,  0.0 hi,  2.3 si,  0.0 st 
-MiB Mem :   3451.4 total,     80.5 free,   3396.3 used,    102.4 buff/cache     
-MiB Swap:   3072.0 total,   2933.6 free,    138.4 used.     55.0 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1522868   1.2g   1836 R  90.9  36.3   0:26.94 bash
-   3337 valerie   20   0 1537388   1.2g   1836 R  90.9  36.7   0:26.91 bash
-   3442 valerie   20   0  231812   4400   2480 R   9.1   0.1   0:00.01 top
-      1 root      20   0   47524  37744   9304 S   0.0   1.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:46:57 up 3 min,  2 users,  load average: 1.69, 0.90, 0.37
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 46.9 us,  2.0 sy,  0.0 ni, 40.8 id,  2.0 wa,  0.0 hi,  8.2 si,  0.0 st 
-MiB Mem :   3451.4 total,     68.4 free,   3414.4 used,     86.6 buff/cache     
-MiB Swap:   3072.0 total,   2855.7 free,    216.2 used.     36.9 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1579496   1.2g   1836 R  90.9  37.0   0:28.16 bash
-   3337 valerie   20   0 1594676   1.3g   1836 R  90.9  37.3   0:28.13 bash
-     58 root      20   0       0      0      0 S  27.3   0.0   0:00.70 kswapd0
-   3445 valerie   20   0  231812   4340   2548 R   9.1   0.1   0:00.01 top
-      1 root      20   0   47524  35184   6744 S   0.0   1.0   0:01.53 systemd
-
-
-top - 16:46:58 up 3 min,  2 users,  load average: 1.69, 0.90, 0.37
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 40.0 us,  2.0 sy,  0.0 ni, 40.0 id,  0.0 wa,  0.0 hi, 18.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     63.7 free,   3420.2 used,     84.3 buff/cache     
-MiB Swap:   3072.0 total,   2763.9 free,    308.1 used.     31.2 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1627280   1.3g   1836 R 100.0  37.2   0:29.39 bash
-   3337 valerie   20   0 1643384   1.3g   1836 R 100.0  37.6   0:29.36 bash
-   2956 valerie   20   0 2462448 123556  21744 S  66.7   3.5   0:10.25 ptyxis
-     58 root      20   0       0      0      0 S  25.0   0.0   0:00.82 kswapd0
-      1 root      20   0   47524  34928   6488 S   0.0   1.0   0:01.53 systemd
-
-
-top - 16:46:59 up 3 min,  2 users,  load average: 1.69, 0.90, 0.37
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 42.9 us,  8.2 sy,  0.0 ni, 36.7 id,  2.0 wa,  0.0 hi, 10.2 si,  0.0 st 
-MiB Mem :   3451.4 total,     79.2 free,   3405.3 used,     87.2 buff/cache     
-MiB Swap:   3072.0 total,   2651.7 free,    420.3 used.     46.0 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1680476   1.3g   1836 R  90.9  38.4   0:30.61 bash
-   3337 valerie   20   0 1697372   1.3g   1836 R  90.9  38.8   0:30.57 bash
-    379 root      20   0       0      0      0 I   9.1   0.0   0:00.06 kworker+
-   3453 valerie   20   0  231812   4492   2572 R   9.1   0.1   0:00.01 top
-      1 root      20   0   47524  32880   5848 S   0.0   0.9   0:01.53 systemd
-
-
-top - 16:47:00 up 3 min,  2 users,  load average: 1.79, 0.94, 0.39
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 39.1 us,  4.3 sy,  0.0 ni, 43.5 id,  0.0 wa,  0.0 hi, 13.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     58.3 free,   3424.7 used,     90.3 buff/cache     
-MiB Swap:   3072.0 total,   2563.1 free,    508.9 used.     26.7 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1735916   1.3g   1836 R 100.0  38.8   0:31.83 bash
-   3337 valerie   20   0 1753604   1.3g   1836 R 100.0  39.2   0:31.79 bash
-     58 root      20   0       0      0      0 S  30.0   0.0   0:01.09 kswapd0
-      1 root      20   0   47524  31344   5848 S   0.0   0.9   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:02 up 3 min,  2 users,  load average: 1.79, 0.94, 0.39
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 40.8 us,  6.1 sy,  0.0 ni, 40.8 id,  0.0 wa,  0.0 hi, 12.2 si,  0.0 st 
-MiB Mem :   3451.4 total,     75.0 free,   3407.9 used,     90.4 buff/cache     
-MiB Swap:   3072.0 total,   2445.9 free,    626.1 used.     43.4 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1786736   1.3g   1836 R  90.9  39.3   0:33.03 bash
-   3337 valerie   20   0 1806272   1.3g   1836 R  90.9  39.8   0:33.00 bash
-      1 root      20   0   47524  30064   5848 S   0.0   0.9   0:01.53 systemd
+   3205 valerie   20   0 5276156   3.0g   1580 R 100.0  88.0   1:34.04 bash
+      1 root      20   0   47524   4588   3632 S   0.0   0.1   0:01.58 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:47:03 up 3 min,  2 users,  load average: 1.79, 0.94, 0.39
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.2 us,  9.3 sy,  0.0 ni, 39.5 id,  0.0 wa,  0.0 hi,  7.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     78.5 free,   3404.8 used,     89.6 buff/cache     
-MiB Swap:   3072.0 total,   2336.9 free,    735.0 used.     46.6 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1836632   1.3g   1836 R 100.0  39.5   0:34.25 bash
-   3337 valerie   20   0 1857488   1.3g   1836 R 100.0  40.0   0:34.21 bash
-   2250 valerie   20   0 4820708 179288  32660 S  20.0   5.1   0:09.63 gnome-s+
-     58 root      20   0       0      0      0 S  10.0   0.0   0:01.33 kswapd0
-   2956 valerie   20   0 2456072  98348  23000 S  10.0   2.8   0:10.41 ptyxis
-
-
-top - 16:47:04 up 3 min,  2 users,  load average: 1.79, 0.94, 0.39
-Tasks: 219 total,   4 running, 215 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 75.6 us,  8.9 sy,  0.0 ni, 13.3 id,  2.2 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     61.7 free,   3412.5 used,    108.0 buff/cache     
-MiB Swap:   3072.0 total,   2253.1 free,    818.9 used.     38.9 avail Mem 
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+top - 14:19:04 up 3 min,  2 users,  load average: 1.41, 0.70, 0.28
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 20.4 us,  4.1 sy,  0.0 ni, 63.3 id,  0.0 wa,  0.0 hi, 12.2 si,  0.0 st 
+MiB Mem :   3451.4 total,     58.2 free,   3433.7 used,     72.7 buff/cache     
+MiB Swap:   3072.0 total,    297.7 free,   2774.3 used.     17.7 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1880060   1.3g   1836 R  90.9  39.6   0:35.47 bash
-   3337 valerie   20   0 1899860   1.3g   1836 R  90.9  40.0   0:35.40 bash
-   2956 valerie   20   0 2456088 104164  30096 S  72.7   2.9   0:10.80 ptyxis
-   2250 valerie   20   0 4824868 173656  32660 S  54.5   4.9   0:10.12 gnome-s+
-     58 root      20   0       0      0      0 S  36.4   0.0   0:01.49 kswapd0
-
-
-top - 16:47:05 up 3 min,  2 users,  load average: 2.21, 1.04, 0.42
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 60.5 us,  4.7 sy,  0.0 ni, 34.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     72.1 free,   3399.5 used,    113.1 buff/cache     
-MiB Swap:   3072.0 total,   2149.7 free,    922.3 used.     51.9 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1922168   1.3g   1836 R  90.9  39.8   0:36.66 bash
-   3337 valerie   20   0 1942364   1.4g   1836 R  90.9  40.3   0:36.60 bash
-   2250 valerie   20   0 4820708 172720  34156 S   9.1   4.9   0:10.42 gnome-s+
-   2956 valerie   20   0 2456088 104568  32036 S   9.1   3.0   0:11.11 ptyxis
-   3473 valerie   20   0  231812   4492   2572 R   9.1   0.1   0:00.01 top
-
-
-top - 16:47:07 up 3 min,  2 users,  load average: 2.21, 1.04, 0.42
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 42.3 us,  1.9 sy,  0.0 ni, 40.4 id,  0.0 wa,  0.0 hi, 15.4 si,  0.0 st 
-MiB Mem :   3451.4 total,     64.3 free,   3407.1 used,    113.5 buff/cache     
-MiB Swap:   3072.0 total,   2073.4 free,    998.6 used.     44.3 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 1965992   1.3g   1836 R  90.9  39.8   0:37.88 bash
-   3337 valerie   20   0 1987112   1.4g   1836 R  90.9  40.3   0:37.82 bash
-     58 root      20   0       0      0      0 S  18.2   0.0   0:01.74 kswapd0
-      1 root      20   0   47524  25200   5848 S   0.0   0.7   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:08 up 3 min,  2 users,  load average: 2.21, 1.04, 0.42
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 45.5 us,  4.5 sy,  0.0 ni, 43.2 id,  0.0 wa,  0.0 hi,  6.8 si,  0.0 st 
-MiB Mem :   3451.4 total,     73.8 free,   3397.4 used,    114.0 buff/cache     
-MiB Swap:   3072.0 total,   1945.7 free,   1126.3 used.     54.0 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2022620   1.3g   1836 R 100.0  39.9   0:39.09 bash
-   3337 valerie   20   0 2043740   1.4g   1836 R 100.0  40.4   0:39.03 bash
-     58 root      20   0       0      0      0 S  10.0   0.0   0:01.87 kswapd0
-      1 root      20   0   47524  23792   5848 S   0.0   0.7   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:09 up 3 min,  2 users,  load average: 2.21, 1.04, 0.42
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.2 us,  3.8 sy,  0.0 ni, 36.5 id,  0.0 wa,  0.0 hi, 15.4 si,  0.0 st 
-MiB Mem :   3451.4 total,     68.6 free,   3402.5 used,    114.2 buff/cache     
-MiB Swap:   3072.0 total,   1803.9 free,   1268.1 used.     48.9 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2093636   1.4g   1836 R  90.9  40.2   0:40.31 bash
-   3337 valerie   20   0 2114624   1.4g   1836 R  90.9  40.8   0:40.25 bash
-     58 root      20   0       0      0      0 S  18.2   0.0   0:01.99 kswapd0
-      1 root      20   0   47524  22512   5848 S   0.0   0.6   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:10 up 3 min,  2 users,  load average: 2.21, 1.04, 0.42
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 45.2 us,  7.1 sy,  0.0 ni, 42.9 id,  0.0 wa,  0.0 hi,  4.8 si,  0.0 st 
-MiB Mem :   3451.4 total,     72.0 free,   3398.4 used,    115.4 buff/cache     
-MiB Swap:   3072.0 total,   1654.4 free,   1417.6 used.     52.9 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2165972   1.4g   1836 R 100.0  40.1   0:41.52 bash
-   3337 valerie   20   0 2186432   1.4g   1836 R 100.0  40.6   0:41.46 bash
-     58 root      20   0       0      0      0 S  20.0   0.0   0:02.13 kswapd0
-      1 root      20   0   47524  20592   5848 S   0.0   0.6   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:11 up 3 min,  2 users,  load average: 2.19, 1.05, 0.43
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 37.0 us,  6.5 sy,  0.0 ni, 43.5 id,  0.0 wa,  0.0 hi, 13.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     64.1 free,   3406.1 used,    115.9 buff/cache     
-MiB Swap:   3072.0 total,   1515.9 free,   1556.1 used.     45.3 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2239232   1.4g   1836 R 100.0  40.7   0:42.73 bash
-   3337 valerie   20   0 2260088   1.4g   1836 R 100.0  41.3   0:42.67 bash
-     58 root      20   0       0      0      0 S  20.0   0.0   0:02.24 kswapd0
-      1 root      20   0   47524  17264   5848 S   0.0   0.5   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:13 up 3 min,  2 users,  load average: 2.19, 1.05, 0.43
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 43.5 us,  4.3 sy,  0.0 ni, 39.1 id,  0.0 wa,  0.0 hi, 13.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     74.9 free,   3396.1 used,    114.1 buff/cache     
-MiB Swap:   3072.0 total,   1373.6 free,   1698.4 used.     55.2 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2311172   1.4g   1836 R 100.0  41.8   0:43.95 bash
-   3337 valerie   20   0 2332028   1.4g   1836 R 100.0  42.4   0:43.89 bash
-      1 root      20   0   47524   9712   5848 S   0.0   0.3   0:01.53 systemd
+   3205 valerie   20   0 5593352   3.0g   1580 R  90.9  87.6   1:39.25 bash
+     58 root      20   0       0      0      0 S  27.3   0.0   0:04.51 kswapd0
+      1 root      20   0   47524   4204   3248 S   0.0   0.1   0:01.58 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:47:14 up 3 min,  2 users,  load average: 2.19, 1.05, 0.43
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 46.5 us,  4.7 sy,  0.0 ni, 44.2 id,  0.0 wa,  0.0 hi,  4.7 si,  0.0 st 
-MiB Mem :   3451.4 total,     78.2 free,   3393.0 used,    113.9 buff/cache     
-MiB Swap:   3072.0 total,   1220.7 free,   1851.3 used.     58.4 avail Mem 
+top - 14:19:09 up 3 min,  2 users,  load average: 1.38, 0.71, 0.28
+Tasks: 220 total,   2 running, 218 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 22.4 us,  2.0 sy,  0.0 ni, 63.3 id,  0.0 wa,  0.0 hi, 12.2 si,  0.0 st 
+MiB Mem :   3451.4 total,     58.4 free,   3433.2 used,     73.4 buff/cache     
+MiB Swap:   3072.0 total,      0.0 free,   3072.0 used.     18.2 avail Mem 
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2385092   1.4g   1836 R 100.0  41.9   0:45.16 bash
-   3337 valerie   20   0 2406344   1.4g   1836 R 100.0  42.5   0:45.10 bash
-      1 root      20   0   47524   8944   5848 S   0.0   0.3   0:01.53 systemd
+   3205 valerie   20   0 5906324   3.0g   1580 R  90.9  88.5   1:44.44 bash
+      1 root      20   0   47524   3308   2352 S   0.0   0.1   0:01.58 systemd
       2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
       3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:47:15 up 3 min,  2 users,  load average: 2.19, 1.05, 0.43
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 41.7 us,  2.1 sy,  0.0 ni, 37.5 id,  0.0 wa,  0.0 hi, 18.8 si,  0.0 st 
-MiB Mem :   3451.4 total,     84.2 free,   3387.3 used,    113.1 buff/cache     
-MiB Swap:   3072.0 total,   1073.6 free,   1998.4 used.     64.1 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2458748   1.4g   1836 R 100.0  42.0   0:46.37 bash
-   3337 valerie   20   0 2480396   1.4g   1836 R 100.0  42.6   0:46.31 bash
-     58 root      20   0       0      0      0 S   9.1   0.0   0:02.62 kswapd0
-      1 root      20   0   47524   8176   5848 S   0.0   0.2   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:16 up 3 min,  2 users,  load average: 2.18, 1.07, 0.44
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 43.2 us,  6.8 sy,  0.0 ni, 40.9 id,  0.0 wa,  0.0 hi,  9.1 si,  0.0 st 
-MiB Mem :   3451.4 total,     75.0 free,   3397.5 used,    111.3 buff/cache     
-MiB Swap:   3072.0 total,    936.6 free,   2135.4 used.     53.9 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2532932   1.4g   1836 R 100.0  41.8   0:47.59 bash
-   3337 valerie   20   0 2554448   1.4g   1836 R 100.0  42.3   0:47.53 bash
-     58 root      20   0       0      0      0 S  16.7   0.0   0:02.78 kswapd0
-      1 root      20   0   47524   7152   5848 S   0.0   0.2   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:17 up 3 min,  2 users,  load average: 2.18, 1.07, 0.44
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 41.3 us,  2.2 sy,  0.0 ni, 43.5 id,  0.0 wa,  0.0 hi, 13.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     64.0 free,   3408.5 used,    111.3 buff/cache     
-MiB Swap:   3072.0 total,    821.4 free,   2250.6 used.     42.9 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2592068   1.4g   1836 R 100.0  41.9   0:48.80 bash
-   3337 valerie   20   0 2614244   1.4g   1836 R 100.0  42.4   0:48.74 bash
-     58 root      20   0       0      0      0 S  20.0   0.0   0:02.90 kswapd0
-   3503 valerie   20   0  231812   4492   2572 R  10.0   0.1   0:00.01 top
-      1 root      20   0   47524   6640   5848 S   0.0   0.2   0:01.53 systemd
-
-
-top - 16:47:19 up 3 min,  2 users,  load average: 2.18, 1.07, 0.44
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.9 us,  2.0 sy,  0.0 ni, 42.9 id,  0.0 wa,  0.0 hi, 10.2 si,  0.0 st 
-MiB Mem :   3451.4 total,     60.2 free,   3412.4 used,    111.1 buff/cache     
-MiB Swap:   3072.0 total,    681.9 free,   2390.1 used.     39.0 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2662820   1.4g   1836 R  90.9  41.9   0:50.02 bash
-   3337 valerie   20   0 2684864   1.4g   1836 R  90.9  42.3   0:49.96 bash
-     58 root      20   0       0      0      0 S  18.2   0.0   0:03.04 kswapd0
-      1 root      20   0   47524   5616   5464 S   0.0   0.2   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:20 up 3 min,  2 users,  load average: 2.18, 1.07, 0.44
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.9 us,  2.0 sy,  0.0 ni, 42.9 id,  0.0 wa,  0.0 hi, 10.2 si,  0.0 st 
-MiB Mem :   3451.4 total,     74.7 free,   3400.3 used,    106.3 buff/cache     
-MiB Swap:   3072.0 total,    534.6 free,   2537.4 used.     51.1 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2734364   1.4g   1836 R  90.9  42.1   0:51.23 bash
-   3337 valerie   20   0 2756804   1.4g   1836 R  90.9  42.5   0:51.17 bash
-      1 root      20   0   47524   3184   3032 S   0.0   0.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:47:21 up 3 min,  2 users,  load average: 2.16, 1.09, 0.45
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 51.2 us,  0.0 sy,  0.0 ni, 48.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,    109.3 free,   3368.6 used,    100.6 buff/cache     
-MiB Swap:   3072.0 total,    394.3 free,   2677.7 used.     82.8 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2805644   1.4g   1836 R 100.0  42.1   0:52.44 bash
-   3337 valerie   20   0 2828216   1.4g   1836 R 100.0  42.5   0:52.38 bash
-      1 root      20   0   47524   2672   2520 S   0.0   0.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
-
-
-top - 16:47:22 up 3 min,  2 users,  load average: 2.16, 1.09, 0.45
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 42.5 us,  7.5 sy,  0.0 ni, 50.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
-MiB Mem :   3451.4 total,     66.4 free,   3411.7 used,    100.2 buff/cache     
-MiB Swap:   3072.0 total,    305.7 free,   2766.3 used.     39.7 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3337 valerie   20   0 2893688   1.4g   1836 R 100.0  42.7   0:53.59 bash
-   3334 valerie   20   0 2870324   1.4g   1708 R 100.0  42.3   0:53.65 bash
-     58 root      20   0       0      0      0 S  30.0   0.0   0:03.52 kswapd0
-      1 root      20   0   47524   2672   2520 S   0.0   0.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:23 up 3 min,  2 users,  load average: 2.16, 1.09, 0.45
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 45.5 us, 11.4 sy,  0.0 ni, 40.9 id,  0.0 wa,  0.0 hi,  2.3 si,  0.0 st 
-MiB Mem :   3451.4 total,     66.7 free,   3418.8 used,     85.2 buff/cache     
-MiB Swap:   3072.0 total,    212.0 free,   2859.9 used.     32.5 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2929988   1.4g   1708 R  90.9  43.0   0:54.87 bash
-   3337 valerie   20   0 2953748   1.5g   1836 R  90.9  43.4   0:54.80 bash
-     58 root      20   0       0      0      0 S  27.3   0.0   0:03.74 kswapd0
-      1 root      20   0   47524   2672   2520 S   0.0   0.1   0:01.53 systemd
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
-
-top - 16:47:25 up 4 min,  2 users,  load average: 2.16, 1.09, 0.45
-Tasks: 219 total,   3 running, 216 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 47.6 us,  0.0 sy,  0.0 ni, 50.0 id,  0.0 wa,  0.0 hi,  2.4 si,  0.0 st 
-MiB Mem :   3451.4 total,     68.3 free,   3422.6 used,     70.8 buff/cache     
-MiB Swap:   3072.0 total,    107.9 free,   2964.1 used.     28.8 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 2998892   1.5g   1708 R 100.0  43.6   0:56.10 bash
-   3337 valerie   20   0 3022652   1.5g   1836 R  90.9  44.0   0:56.03 bash
-     58 root      20   0       0      0      0 S  36.4   0.0   0:03.97 kswapd0
-   3521 valerie   20   0  231812   4440   2520 R   9.1   0.1   0:00.01 top
-      1 root      20   0   47524   2416   2264 S   0.0   0.1   0:01.53 systemd
-
-
-top - 16:47:26 up 4 min,  2 users,  load average: 2.15, 1.10, 0.46
-Tasks: 219 total,   5 running, 214 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 44.9 us, 10.2 sy,  0.0 ni, 28.6 id,  8.2 wa,  0.0 hi,  8.2 si,  0.0 st 
-MiB Mem :   3451.4 total,     73.8 free,   3419.5 used,     66.0 buff/cache     
-MiB Swap:   3072.0 total,      8.5 free,   3063.5 used.     31.9 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
-   3334 valerie   20   0 3060140   1.5g   1708 R 100.0  44.1   0:57.34 bash
-   3337 valerie   20   0 3082712   1.5g   1836 R 100.0  44.4   0:57.26 bash
-     58 root      20   0       0      0      0 R  40.0   0.0   0:04.14 kswapd0
-   3524 valerie   20   0  231812   4228   2436 R  10.0   0.1   0:00.02 top
-      1 root      20   0   47524   1776   1624 S   0.0   0.1   0:01.53 systemd
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
