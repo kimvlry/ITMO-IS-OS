@@ -12,8 +12,7 @@ fi
 dmesg -C
 for ((i=1; i<=$K; ++i)); do
     ./newmem.bash $N & 
-    pid=$!
-    wait $pid
+    sleep 1
 done
 
 >$report
